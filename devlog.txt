@@ -37,6 +37,10 @@ pd 06
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
+claireL -- 2018-11-19 23:45
+--------------------------------------------------------------
+In class we realized an error with the image API. Damien was calling for images using tags but tags such as 'green' was not returning any images in relation to 'green'. Eventually Dennis realized that Damien was calling for the user's profile picture rather than the image itself. There's also a problem where we get HTTP errors of "too many requests" that we're working on right now.
+
 addisonH -- 2018-11-19 21:45
 --------------------------------------------------------------
 We started work on the design document and decided on our project.

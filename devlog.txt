@@ -37,7 +37,10 @@ pd 06
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-fristL -- TIMESTAMP
+addisonH -- 2018-11-19 21:45
 --------------------------------------------------------------
-<Thing fristL did.>
+We started work on the design document and decided on our project.
+We chose foundation as our framework.
+We chose jservice as our 1st api and we sought out our second.
+We talked about the component map, site map, and database schema.
 ==============================================================

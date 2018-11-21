@@ -39,8 +39,18 @@ Online trivia game that rewards you for getting answers correctly and incorrectl
 claireL -- 2018-11-21 12:28
 --------------------------------------------------------------
 Design Doc comments:
-- People were confused about the search functionality of our project since it seemed "tacked on" and not relevant to the core part of the project. Solution: we will fix this by adding the search bar component to the Questions and Answers screen. That way, when you get a question wrong you can search the correct answer and learn more about it right after. This will hopefully streamline usage of the search bar and make it more logical.
-- Also, people were confused what the point of the questions database was. We added explanatory text that said that we were storing it so that users don't get the same question. We also removed the question and answer parts of the database because it's not relevant to the actual project. The database schema has been updated within the design doc.
+- People were confused about the search functionality of our project 
+since it seemed "tacked on" and not relevant to the core part of the 
+project. Solution: we will fix this by adding the search bar component 
+to the Questions and Answers screen. That way, when you get a question 
+wrong you can search the correct answer and learn more about it right 
+after. This will hopefully streamline usage of the search bar and make 
+it more logical.
+- Also, people were confused what the point of the questions database was. 
+We added explanatory text that said that we were storing it so that users 
+don't get the same question. We also removed the question and answer parts 
+of the database because it's not relevant to the actual project. The 
+database schema has been updated within the design doc.
 
 ==============================================================
 
@@ -52,7 +62,12 @@ We created and finished a design doc
 
 claireL -- 2018-11-19 23:45
 --------------------------------------------------------------
-In class we realized an error with the image API. Damien was calling for images using tags but tags such as 'green' was not returning any images in relation to 'green'. Eventually Dennis realized that Damien was calling for the user's profile picture rather than the image itself. There's also a problem where we get HTTP errors of "too many requests" that we're working on right now.
+In class we realized an error with the image API. Damien was calling 
+for images using tags but tags such as 'green' was not returning any 
+images in relation to 'green'. Eventually Dennis realized that Damien 
+was calling for the user's profile picture rather than the image itself. 
+There's also a problem where we get HTTP errors of "too many requests" 
+that we're working on right now.
 
 ==============================================================
 

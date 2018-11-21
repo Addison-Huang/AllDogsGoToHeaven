@@ -23,7 +23,8 @@ Dennis Chen
 Damian Wasilewicz
 pd 06
 ---------------------
-<Project Title/Description>
+What is Trivia?
+Online trivia game that rewards you for getting answers correctly and incorrectly (gives you nuggets of knowledge if you answer incorrectly).
 
 
  ______   ______   __   __   __       ______   _______     
@@ -35,7 +36,11 @@ pd 06
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
 ==============================================================
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
+addisonH -- 2018-11-21 06:38
+--------------------------------------------------------------
+We finalized our project idea
+We created and finished a design doc
+==============================================================
 
 addisonH -- 2018-11-19 21:45
 --------------------------------------------------------------

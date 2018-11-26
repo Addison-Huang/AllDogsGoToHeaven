@@ -1,0 +1,16 @@
+{% extends 'auth.html' %}
+
+{% block head %}<title> REGISTER </title>{% endblock %}
+
+
+{% set msgs = get_flashed_messages() %}
+	{% for each in msgs %}
+		<h2>{{each}}<h2>
+		<br>
+{% endfor %}
+{% block heading %}<h3>Enter a username and password</h3>{% endblock %}
+{% block action %}
+<form action = "/added" method="POST">
+{% endblock %}
+{% block register %}
+{% endblock %}

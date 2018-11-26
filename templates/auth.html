@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}<title> LOGIN </title>{% endblock %}
+
+{% block content %}
+{% set msgs = get_flashed_messages() %}
+	{% for each in msgs %}
+		<h2>{{each}}<h2>
+		<br>
+{% endfor %}
+{% block heading %}<h3>Please Sign in</h3>{% endblock %}
+{% block action %}
+<form action = "/auth" method="POST">
+{% endblock %}
+  Username
+  <br>
+  <input type = "text" name = "username">
+  <br>
+  Password
+  <br>
+  <input type = "password" name = "password">
+  <br>
+  <input type = "submit" name = "sub1">
+</form>
+Or
+{% block register %}
+<form action="/reg">
+  <input type="submit" name="regbutton" value="REGISTER" formaction="/reg">
+</form>
+{% endblock %}
+
+
+{% endblock %}

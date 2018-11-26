@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+  
+  <head>
+    {% block head %}
+    <title> {% block title %} {% endblock %}
+      TITLE
+    </title>
+    {% endblock %}
+  </head>
+
+  <body>
+    {% block content %}
+    CONTENT
+     {% endblock %}
+  </body>
+
+  {% block footer %}
+  &copy; copyright 2018 by Quack-a-Moo
+  {% endblock %}
+  
+</html>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}<title> Home </title>{% endblock %}
+{% block content %}
+<h1>{{Name}}</h1>
+{% set msgs = get_flashed_messages() %}
+	{% for each in msgs %}
+		<h2>{{each}}<h2>
+		<br>
+{% endfor %}
+<h1>Welcome {{u}}</h1>
+<form action="/logout">
+  <input type="submit" name="logoutbutton" value="logout">
+</form>
+<br>
+
+<h2> Play Game </h2>
+<button type="button"> Play Game </button>
+
+<br>
+<h2>High Scores</h2>
+<ol>
+</ol>
+<br>
+{% endblock %}

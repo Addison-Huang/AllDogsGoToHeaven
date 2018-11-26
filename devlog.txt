@@ -85,3 +85,9 @@ We chose foundation as our framework.
 We chose jservice as our 1st api and we sought out our second.
 We talked about the component map, site map, and database schema.
 ==============================================================
+
+dennisC -- 2018-11-26 12:33
+--------------------------------------------------------------
+I started working on the start page of the jeopardy game with
+the categories.
+==============================================================

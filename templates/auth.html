@@ -5,28 +5,34 @@
 {% block content %}
 {% set msgs = get_flashed_messages() %}
 	{% for each in msgs %}
-		<h2>{{each}}<h2>
+<h2>{{each}}<h2>
+      
+
 		<br>
 {% endfor %}
 {% block heading %}<h3>Please Sign in</h3>{% endblock %}
-{% block action %}
-<form action = "/auth" method="POST">
+		{% block action %}
+		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.0/css/foundation.css">
+<form class="callout text-center" action = "/auth" method="POST">
 {% endblock %}
   Username
-  <br>
-  <input type = "text" name = "username">
-  <br>
-  Password
-  <br>
-  <input type = "password" name = "password">
-  <br>
-  <input type = "submit" name = "sub1">
+<br>
+<div class="floated-label-wrapper">
+      <label for="full-name">Full name</label>
+  <input type = "text" name = "username" placeholder="Full name">
+  <div class="floated-label-wrapper">
+    <label for="pass">Password</label>
+        <input type="password" id="pass" name="password input" placeholder="Password">
+ </div>
+  <input class="button expanded" type="submit" value="Sign up" name="sub1">
 </form>
 Or
 {% block register %}
 <form action="/reg">
-  <input type="submit" name="regbutton" value="REGISTER" formaction="/reg">
+ 
+  <input class="button expanded" type="submit" value="Sign up" name="regbutton" value="REGISTER" formaction="/reg">
 </form>
+
 {% endblock %}
 
 

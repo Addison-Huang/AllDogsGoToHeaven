@@ -43,7 +43,7 @@ def reg():
 
 @app.route("/added",methods=['GET','POST'])
 def added():
-    DB_FILE="data/quackamoo.db"
+    DB_FILE="data/AllDogsGoToHeaven.db"
     newUsername = request.form['username']
     newPassword = request.form['password']
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
@@ -53,8 +53,8 @@ def added():
     userList = c.fetchall()
     print(userList)
     if newUsername not in userList:
-        insert = "INSERT INTO users VALUES(?,?)"
-        params=(newUsername,newPassword)
+        insert = "INSERT INTO users VALUES(?,?,?)"
+        params=(newUsername,newPassword,0)
         c.execute(insert,params)
         db.commit()
         db.close()
@@ -62,10 +62,8 @@ def added():
         return redirect(url_for('home'))
     else:
         flash('Username Taken')
-        return redirect(url_for('home')
-
-
-
+        return redirect(url_for('home'))
+                        
 if __name__ == '__main__':
-        app.debug = True
-        app.run()
+    app.debug = True
+    app.run()

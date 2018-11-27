@@ -69,9 +69,9 @@ We created and finished a design doc
 
 claireL -- 2018-11-19 23:45
 --------------------------------------------------------------
-In class we realized an error with the image API. Damien was calling 
+In class we realized an error with the image API. Damian was calling 
 for images using tags but tags such as 'green' was not returning any 
-images in relation to 'green'. Eventually Dennis realized that Damien 
+images in relation to 'green'. Eventually Dennis realized that Damian 
 was calling for the user's profile picture rather than the image itself. 
 There's also a problem where we get HTTP errors of "too many requests" 
 that we're working on right now.
@@ -84,4 +84,16 @@ We started work on the design document and decided on our project.
 We chose foundation as our framework.
 We chose jservice as our 1st api and we sought out our second.
 We talked about the component map, site map, and database schema.
+==============================================================
+
+dennisC -- 2018-11-26 12:33
+--------------------------------------------------------------
+I started working on the start page of the jeopardy game with
+the categories.
+==============================================================
+
+damianW-- 2018-11-26 12:30
+--------------------------------------------------------------
+Worked on landing page on LandingPage branch. Added some
+Foundation styling.
 ==============================================================

@@ -37,11 +37,30 @@ Online trivia game that rewards you for getting answers correctly and incorrectl
 ==============================================================
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-addisonH -- 2018-11-26 11:24
+addisonH -- 2018-11-19 21:45
 --------------------------------------------------------------
-Updated readme to include a summary of the project.
+We started work on the design document and decided on our project.
+We chose foundation as our framework.
+We chose jservice as our 1st api and we sought out our second.
+We talked about the component map, site map, and database schema.
 ==============================================================
 
+claireL -- 2018-11-19 23:45
+--------------------------------------------------------------
+In class we realized an error with the image API. Damian was calling 
+for images using tags but tags such as 'green' was not returning any 
+images in relation to 'green'. Eventually Dennis realized that Damian 
+was calling for the user's profile picture rather than the image itself. 
+There's also a problem where we get HTTP errors of "too many requests" 
+that we're working on right now.
+
+==============================================================
+
+addisonH -- 2018-11-21 06:38
+--------------------------------------------------------------
+We finalized our project idea
+We created and finished a design doc
+==============================================================
 
 claireL -- 2018-11-21 12:28
 --------------------------------------------------------------
@@ -58,32 +77,17 @@ We added explanatory text that said that we were storing it so that users
 don't get the same question. We also removed the question and answer parts 
 of the database because it's not relevant to the actual project. The 
 database schema has been updated within the design doc.
-
 ==============================================================
 
-addisonH -- 2018-11-21 06:38
+addisonH -- 2018-11-26 11:24
 --------------------------------------------------------------
-We finalized our project idea
-We created and finished a design doc
+Updated readme to include a summary of the project.
 ==============================================================
 
-claireL -- 2018-11-19 23:45
+damianW-- 2018-11-26 12:30
 --------------------------------------------------------------
-In class we realized an error with the image API. Damian was calling 
-for images using tags but tags such as 'green' was not returning any 
-images in relation to 'green'. Eventually Dennis realized that Damian 
-was calling for the user's profile picture rather than the image itself. 
-There's also a problem where we get HTTP errors of "too many requests" 
-that we're working on right now.
-
-==============================================================
-
-addisonH -- 2018-11-19 21:45
---------------------------------------------------------------
-We started work on the design document and decided on our project.
-We chose foundation as our framework.
-We chose jservice as our 1st api and we sought out our second.
-We talked about the component map, site map, and database schema.
+Worked on landing page on LandingPage branch. Added some
+Foundation styling.
 ==============================================================
 
 dennisC -- 2018-11-26 12:33
@@ -92,8 +96,9 @@ I started working on the start page of the jeopardy game with
 the categories.
 ==============================================================
 
-damianW-- 2018-11-26 12:30
+addisonH -- 2018-11-26 12:34
 --------------------------------------------------------------
-Worked on landing page on LandingPage branch. Added some
-Foundation styling.
+Created HTML templates
+added login code
 ==============================================================
+

@@ -16,6 +16,7 @@ def questions(): #creates the questions db
 def main(): #calls all of the functions to build the databases
     try:
         users()
+        questions()
     except:
         pass
     

@@ -21,7 +21,7 @@ def home():
 def authPage():
     DB_FILE="data/AllDogsGoToHeaven.db"
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-    c = db.cursor() 
+    c = db.cursor()
     username=request.form['username']
     command = 'SELECT password FROM users WHERE users.username = "{0}"'.format(username)
     c.execute(command)
@@ -32,7 +32,7 @@ def authPage():
         return redirect(url_for('home'))
     elif request.form['password'] == password[0]:
         session['username'] = username
-        return render_template('home.html')
+        return render_template('home.html', Name = username)
     else:
         flash('incorrect credentials')
         return redirect(url_for('home'))
@@ -47,7 +47,7 @@ def added():
     newUsername = request.form['username']
     newPassword = request.form['password']
     db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-    c = db.cursor() 
+    c = db.cursor()
     command = 'SELECT username FROM users;'
     c.execute(command)
     userList = c.fetchall()
@@ -63,7 +63,7 @@ def added():
     else:
         flash('Username Taken')
         return redirect(url_for('home'))
-                        
+
 if __name__ == '__main__':
     app.debug = True
     app.run()

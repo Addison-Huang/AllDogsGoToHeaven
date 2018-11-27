@@ -2,22 +2,32 @@
 
 {% block head %}<title> Home </title>{% endblock %}
 {% block content %}
-<h1>{{Name}}</h1>
+<h1>Player:{{Name}}</h1>
 {% set msgs = get_flashed_messages() %}
 	{% for each in msgs %}
 		<h2>{{each}}<h2>
 		<br>
 {% endfor %}
-<h1>Welcome {{u}}</h1>
-<form action="/logout">
-  <input type="submit" name="logoutbutton" value="logout">
-</form>
-<br>
-
-<h2> Play Game </h2>
-<button type="button"> Play Game </button>
-
-<br>
+<div class="grid-container">
+      <div class="grid-x grid-padding-x">
+        <div class="large-12 cell">
+          <center><h1>Welcome, {{Name}}!</h1></center>
+        </div>
+      </div>
+    <div class= "top-bar">
+      <div class = "top-bar-left">
+        <ul class = "menu">
+          <li class = "menu-text" data-magellan>Nav Bar</li>
+          <li><a href = '#'>
+						<button type = "button" class = "button primary">Play Game</button>
+					</a></li>
+          <li><a href = '#'>
+						<form action="/logout">
+					  	<input type="submit" name="logoutbutton" value="logout">
+						</form></a></li>
+        </ul>
+      </div>
+			</div>
 <h2>High Scores</h2>
 <ol>
 </ol>

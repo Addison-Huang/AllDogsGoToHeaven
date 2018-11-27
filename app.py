@@ -15,13 +15,10 @@ app=Flask(__name__)
 
 @app.route('/categories')
 def startGame():
-    url = urllib.request.urlopen("http://jservice.io/api/random")
+    url = urllib.request.urlopen("http://jservice.io/api/clues?value=100")
     data = json.loads(url.read())
     print(data)
-    return render_template('categories.html', question = data[0]['question'], 
-                            answer = data[0]['answer'], 
-                            difficulty = data[0]['value'],
-                            category = data[0]['category']['title'])
+    return render_template('categories.html')
                         
 
 if __name__ == "__main__":

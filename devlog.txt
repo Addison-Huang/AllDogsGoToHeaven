@@ -113,3 +113,11 @@ Fixed foundation styling, added into base.html file
 Created navbar with play game button and logout form incorporated,
 not aesthetically pleasing but will fix that
 ==============================================================
+
+dennisC -- 2018-11-28 17:37
+--------------------------------------------------------------
+Made it so that a random question is retrieved from the 
+jService API depending on how many points the player picked, and
+redirects them to an answer page
+==============================================================
+

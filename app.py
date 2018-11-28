@@ -78,6 +78,21 @@ def startGame():
         print(dataList[i][0]['question'])
     return render_template('categories.html')
 
+@app.route('/play')
+def play():
+    '''
+    jservice API
+    '''
+    url = urllib.request.urlopen("http://jservice.io/api/random")
+    data = json.loads(url.read())
+    print(data)
+
+    return render_template('question.html', question = data[0]['question'], category = data[0]['category']['title'])
+
+@app.route('/search')
+def search_results():
+    return 
+
 if __name__ == '__main__':
     app.debug = True
     app.run()

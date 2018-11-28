@@ -6,5 +6,8 @@
 {% endblock %}
   {% block content %}
   <h2>Question</h2>
-  {{question}} Category: {{category}}
+  {{question}} <br><br>Category: {{category}}
+  <form action="/search">
+    <input type="submit" name="search" value="search">
+  </form></a></li>
 {% endblock %}

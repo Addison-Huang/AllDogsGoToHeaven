@@ -1,6 +1,6 @@
 {% extends 'auth.html' %}
 
-{% block head %}<title> REGISTER </title>{% endblock %}
+{% block head %}<title> Register Page </title>{% endblock %}
 
 
 {% set msgs = get_flashed_messages() %}
@@ -8,8 +8,9 @@
 		<h2>{{each}}<h2>
 		<br>
 {% endfor %}
-{% block heading %}<h3>Enter a username and password</h3>{% endblock %}
-{% block action %}
+{% block heading %}<h3><center>Register for an Account </center></h3>{% endblock %}
+		{% block action %}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.0/css/foundation.css">
 <form action = "/added" method="POST">
 {% endblock %}
 {% block register %}

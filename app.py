@@ -1,6 +1,9 @@
 from util import db_updater as update
 from flask import Flask,render_template,request,session,url_for,redirect,flash
 from os import urandom
+import urllib.request
+import json
+import random
 
 import sqlite3 #imports sqlite
 DB_FILE="data/quackamoo.db"
@@ -64,34 +67,31 @@ def added():
         flash('Username Taken')
         return redirect(url_for('home'))
 
-@app.route('/categories')
+@app.route('/points')
+def startPage():
+    return render_template('points.html')
+
+@app.route('/question')
 def startGame():
-    url = "http://jservice.io/api/clues?value="
-    urlList = []
-    dataList = []
-    for i in range(1,11):
-        urlList.append(urllib.request.urlopen(url + str(i * 100)))
-        dataList.append(json.loads(urlList[i-1].read()))
-    del dataList[6]
-    del dataList[8]
-    for i in range(7):
-        print(dataList[i][0]['question'])
-    return render_template('categories.html')
+    value = list(dict(request.args).keys())[0]
+    url = "http://jservice.io/api/clues?value=" + value
+    readUrl = urllib.request.urlopen(url)
+    data = json.loads(readUrl.read())
+    randI =  random.randint(0,len(data) - 1)
+    question = data[randI]['question']
+    category = data[randI]['category']['title']
+    return render_template('question.html', question = question, category = category,
+                            link = '/check?question=' + '_'.join(question.split(' ')))
 
-@app.route('/play')
-def play():
-    '''
-    jservice API
-    '''
-    url = urllib.request.urlopen("http://jservice.io/api/random")
-    data = json.loads(url.read())
-    print(data)
-
-    return render_template('question.html', question = data[0]['question'], category = data[0]['category']['title'])
+@app.route('/check', methods = ['GET','POST'])
+def checkAnswer():
+    question = ' '.join(request.args['question'].split('_'))
+    print(question)
+    return render_template('points.html')
 
 @app.route('/search')
 def search_results():
-    return 
+    return
 
 if __name__ == '__main__':
     app.debug = True

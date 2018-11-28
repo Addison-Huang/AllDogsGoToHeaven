@@ -4,10 +4,9 @@
 {% block head %}
   <title>Question</title>
 {% endblock %}
-  {% block content %}
-  <h2>Question</h2>
-  {{question}} <br><br>Category: {{category}}
-  <form action="/search">
-    <input type="submit" name="search" value="search">
-  </form></a></li>
+{% block content %}
+  <h3>Question: {{question}}<br>Category: {{category}}</h3>
+  <form action = {{link}} method = "POST">
+    Answer:<input type = 'text' name = 'answer'>
+  </form>
 {% endblock %}

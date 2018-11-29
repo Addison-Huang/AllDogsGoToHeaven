@@ -80,10 +80,9 @@ def startGame():
     data = json.loads(readUrl.read())
     randI =  random.randint(0,len(data) - 1)
     question = data[randI]['question']
-    answer = data[randI]['answer']
-    category = data[randI]['category']['title']
-    print(data[randI]['answer'])
+    answer = "_".join(data[randI]['answer'].split(" "))
     print(answer)
+    category = data[randI]['category']['title']
     return render_template('question.html', question = question, category = category, answer = answer,
                             link = '/check?question=' + '_'.join(question.split(' ')))
 
@@ -91,11 +90,11 @@ def startGame():
 def checkAnswer():
     question = ' '.join(request.args['question'].split('_'))
     useranswer = request.form['useranswer']
-    answer = request.form['answer']
+    answer = ' '.join(request.form['answer'].split('_'))
     context = ssl._create_unverified_context()
     urlData="https://www.googleapis.com/customsearch/v1?key="
     key="AIzaSyDLFqAoBs-xQCm9XPVAlTsTa0jG8ewM57k"
-    query = answer
+    query = request.form['answer']
     temp = "&cx=009364855531151632334:atzshazndou&q=" + query
     urlData2=temp
     webURL=urllib.request.urlopen(urlData+key+urlData2,context=context)

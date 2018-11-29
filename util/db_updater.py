@@ -12,6 +12,9 @@ def adduser(username, password):
     command = "INSERT INTO users VALUES(" + '"' + username + '", "' + password + '"' +'0)'
     c.execute(command)
 
+#def subScore(username,score):
+#    command = "SELECT score FROM users WHERE" + 
+
     
     
     

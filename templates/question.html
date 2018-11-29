@@ -7,6 +7,8 @@
 {% block content %}
   <h3>Question: {{question}}<br>Category: {{category}}</h3>
   <form action = {{link}} method = "POST">
-    Answer:<input type = 'text' name = 'answer'>
+    Answer:<input type = 'text' name = 'useranswer'>
+    <input type = 'hidden' name = 'answer' value = {{answer}}>
+    <input type = 'submit'>
   </form>
 {% endblock %}

@@ -4,6 +4,7 @@ from os import urandom
 import urllib.request
 import json
 import random
+import ssl
 
 import sqlite3 #imports sqlite
 DB_FILE="data/quackamoo.db"
@@ -79,15 +80,30 @@ def startGame():
     data = json.loads(readUrl.read())
     randI =  random.randint(0,len(data) - 1)
     question = data[randI]['question']
+    answer = data[randI]['answer']
     category = data[randI]['category']['title']
-    return render_template('question.html', question = question, category = category,
+    print(data[randI]['answer'])
+    print(answer)
+    return render_template('question.html', question = question, category = category, answer = answer,
                             link = '/check?question=' + '_'.join(question.split(' ')))
 
 @app.route('/check', methods = ['GET','POST'])
 def checkAnswer():
     question = ' '.join(request.args['question'].split('_'))
-    print(question)
-    return render_template('points.html')
+    useranswer = request.form['useranswer']
+    answer = request.form['answer']
+    context = ssl._create_unverified_context()
+    urlData="https://www.googleapis.com/customsearch/v1?key="
+    key="AIzaSyDLFqAoBs-xQCm9XPVAlTsTa0jG8ewM57k"
+    query = answer
+    temp = "&cx=009364855531151632334:atzshazndou&q=" + query
+    urlData2=temp
+    webURL=urllib.request.urlopen(urlData+key+urlData2,context=context)
+    data=webURL.read()
+    data=json.loads(data)
+    title=data['items'][0]['title']
+    link = data['items'][0]['link']
+    return render_template('results.html', answer = answer, useranswer = useranswer, title = title, link = link)
 
 @app.route('/search')
 def search_results():

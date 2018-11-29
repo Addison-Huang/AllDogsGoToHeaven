@@ -116,8 +116,19 @@ not aesthetically pleasing but will fix that
 
 dennisC -- 2018-11-28 17:37
 --------------------------------------------------------------
-Made it so that a random question is retrieved from the 
+Made it so that a random question is retrieved from the
 jService API depending on how many points the player picked, and
 redirects them to an answer page
 ==============================================================
 
+damianW -- 2018-11-28 21:18
+--------------------------------------------------------------
+Worked on question route as well.
+Linked navbar to allow user to start playing game.
+Worked on gameplay; after user submits answer to question,
+they are redirected to page with their answer, correct answer,
+point gain/loss summary, and links to more information.
+BUGS: When displaying answer, shows only first word of answer
+from API; this could be because I used it as value in form.
+Placeholder point summary
+==============================================================

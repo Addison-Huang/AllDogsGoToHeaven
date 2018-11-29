@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+  <title>Results</title>
+  <h1>Here's how you did</h1>
+{% endblock %}
+{% block content %}
+Your Answer: {{useranswer}} <br>
+Correct Answer: {{answer}}<br>
+Question Summary: Points
+<br>
+Read some more about the content:
+<a href = {{link}}> {{title}} </a>
+{% endblock %}

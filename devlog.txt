@@ -132,3 +132,10 @@ BUGS: When displaying answer, shows only first word of answer
 from API; this could be because I used it as value in form.
 Placeholder point summary
 ==============================================================
+
+addisonH -- 2018-11-28 22:38
+--------------------------------------------------------------
+Added HTMl templates
+Started work on database code
+Fixed bugs on app.py "ImportError: No moduel named util"
+==============================================================

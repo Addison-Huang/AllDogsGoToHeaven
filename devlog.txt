@@ -151,3 +151,10 @@ addisonH -- 2018-11-29 12:23
 Added addScore() and subScore()
 Finished all of the db code
 ==============================================================
+
+dennisC -- 2018-11-29 12:34
+--------------------------------------------------------------
+Fixed the issue with only one word in the answer being shown 
+on the results page, which subsequently also fixed the search
+result showing something wrong
+==============================================================

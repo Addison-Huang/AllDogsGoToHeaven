@@ -137,5 +137,17 @@ addisonH -- 2018-11-28 22:38
 --------------------------------------------------------------
 Added HTMl templates
 Started work on database code
-Fixed bugs on app.py "ImportError: No moduel named util"
+Fixed bugs on app.py "ImportError: No module named util"
+==============================================================
+
+claireL -- 2018-11-29 11:38
+--------------------------------------------------------------
+Added log in page with foundation styling
+Show password doesn't work right now.
+==============================================================
+
+addisonH -- 2018-11-29 12:23
+--------------------------------------------------------------
+Added addScore() and subScore()
+Finished all of the db code
 ==============================================================

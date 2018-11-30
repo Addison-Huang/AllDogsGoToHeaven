@@ -158,3 +158,10 @@ Fixed the issue with only one word in the answer being shown
 on the results page, which subsequently also fixed the search
 result showing something wrong
 ==============================================================
+
+dennisC -- 2018-11-29 19:33
+--------------------------------------------------------------
+Made it so that the user can get the question wrong 3 times
+before being sent to a page saying the user is wrong, but if the
+user gets it right, then they are sent to a page reflecting that
+==============================================================

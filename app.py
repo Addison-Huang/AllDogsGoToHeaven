@@ -79,30 +79,52 @@ def startGame():
     readUrl = urllib.request.urlopen(url)
     data = json.loads(readUrl.read())
     randI =  random.randint(0,len(data) - 1)
-    question = data[randI]['question']
-    answer = "_".join(data[randI]['answer'].split(" "))
-    print(answer)
+    question = data[randI]['question'].split(' ')
+    for each in question:
+        if each == '&':
+            question[question.index('&')] = 'and'
+    question = ' '.join(question)
+    answer = "_".join(data[randI]['answer'].strip('<i>').strip('</i>').split(" "))
     category = data[randI]['category']['title']
+    uCategory = '_'.join(category.split(' '))
     return render_template('question.html', question = question, category = category, answer = answer,
-                            link = '/check?question=' + '_'.join(question.split(' ')))
+                            link = '/check?question=' + '_'.join(question.split(' ')),
+                            uCategory = uCategory)
 
+timesWrong = 0
 @app.route('/check', methods = ['GET','POST'])
 def checkAnswer():
+    global timesWrong
     question = ' '.join(request.args['question'].split('_'))
     useranswer = request.form['useranswer']
-    answer = ' '.join(request.form['answer'].split('_'))
+    answer = request.form['answer']
+    category = ' '.join(request.form['uCategory'].split('_'))
     context = ssl._create_unverified_context()
     urlData="https://www.googleapis.com/customsearch/v1?key="
     key="AIzaSyDLFqAoBs-xQCm9XPVAlTsTa0jG8ewM57k"
-    query = request.form['answer']
+    query = answer
     temp = "&cx=009364855531151632334:atzshazndou&q=" + query
     urlData2=temp
     webURL=urllib.request.urlopen(urlData+key+urlData2,context=context)
     data=webURL.read()
     data=json.loads(data)
-    title=data['items'][0]['title']
+    title= data['items'][0]['title']
     link = data['items'][0]['link']
-    return render_template('results.html', answer = answer, useranswer = useranswer, title = title, link = link)
+    if useranswer.strip(' ').lower() == answer.lower():
+        return render_template('correct.html', link = link, title = title)
+        timesWrong = 0
+    else:
+        timesWrong += 1
+        if timesWrong == 3:
+            timesWrong = 0
+            return render_template('results.html', answer = ' '.join(answer.split('_')),
+                                    useranswer = useranswer, title = title, link = link)
+        else:
+            return render_template('question.html', question = question,
+                                    answer = answer, category = category,
+                                    link = '/check?question=' + request.args['question'],
+                                    wrong = 'Incorrect, Tries Left:' + str(3 - timesWrong),
+                                    uCategory = request.form['uCategory'])
 
 @app.route('/search')
 def search_results():

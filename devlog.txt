@@ -171,3 +171,9 @@ damianW -- 2018-11-30 10:06
 Added return to points page button, found bugs-number of tries
 left is glitchy and getting questions right doesn't work
 ==============================================================
+
+dennisC -- 2018-11-30 12:34
+--------------------------------------------------------------
+Fixed a problem with multi-word answers not working, also added
+some play again buttons, started on added/subtracting points
+==============================================================

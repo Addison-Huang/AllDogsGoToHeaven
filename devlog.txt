@@ -137,5 +137,43 @@ addisonH -- 2018-11-28 22:38
 --------------------------------------------------------------
 Added HTMl templates
 Started work on database code
-Fixed bugs on app.py "ImportError: No moduel named util"
+Fixed bugs on app.py "ImportError: No module named util"
+==============================================================
+
+claireL -- 2018-11-29 11:38
+--------------------------------------------------------------
+Added log in page with foundation styling
+Show password doesn't work right now.
+==============================================================
+
+addisonH -- 2018-11-29 12:23
+--------------------------------------------------------------
+Added addScore() and subScore()
+Finished all of the db code
+==============================================================
+
+dennisC -- 2018-11-29 12:34
+--------------------------------------------------------------
+Fixed the issue with only one word in the answer being shown
+on the results page, which subsequently also fixed the search
+result showing something wrong
+==============================================================
+
+dennisC -- 2018-11-29 19:33
+--------------------------------------------------------------
+Made it so that the user can get the question wrong 3 times
+before being sent to a page saying the user is wrong, but if the
+user gets it right, then they are sent to a page reflecting that
+==============================================================
+
+damianW -- 2018-11-30 10:06
+--------------------------------------------------------------
+Added return to points page button, found bugs-number of tries
+left is glitchy and getting questions right doesn't work
+==============================================================
+
+dennisC -- 2018-11-30 12:34
+--------------------------------------------------------------
+Fixed a problem with multi-word answers not working, also added
+some play again buttons, started on added/subtracting points
 ==============================================================

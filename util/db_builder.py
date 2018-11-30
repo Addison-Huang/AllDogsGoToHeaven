@@ -10,7 +10,7 @@ def users(): #creates the users db
     c.execute(command)
 
 def questions(): #creates the questions db
-    command = "CREATE TABLE questions(username TEXT, question TEXT)"
+    command = "CREATE TABLE questions(username TEXT, question TEXT, answer TEXT)"
     c.execute(command)
 
 def main(): #calls all of the functions to build the databases

@@ -6,9 +6,10 @@
 {% endblock %}
 {% block content %}
   <h3>Question: {{question}}<br>Category: {{category}}</h3>
+  <h4>{{wrong}}</h4>
   <form action = {{link}} method = "POST">
     Answer:<input type = 'text' name = 'useranswer'>
     <input type = 'hidden' name = 'answer' value = {{answer}}>
-    <input type = 'submit'>
+    <input type = 'hidden' name = 'uCategory' value = {{uCategory}}>
   </form>
 {% endblock %}

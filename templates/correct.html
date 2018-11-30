@@ -3,17 +3,13 @@
 
 {% block head %}
   <title>Results</title>
-  <h1>Incorrect</h1>
+  <h1>Correct</h1>
 {% endblock %}
 {% block content %}
-Your Answer: {{useranswer}} <br>
-Correct Answer: {{answer}}<br>
 Question Summary: Points
 <br>
-Read some more about the content:
+Want to know more?
 <a href = {{link}}> {{title}} </a>
-<br>
-<br>
 <form action = '/points' method = "POST">
   <input type = 'submit' name = "Go back to menu" value = "Play Again?">
 </form>

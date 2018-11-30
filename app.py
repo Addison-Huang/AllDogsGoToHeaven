@@ -68,7 +68,7 @@ def added():
         flash('Username Taken')
         return redirect(url_for('home'))
 
-@app.route('/points')
+@app.route('/points', methods = ['GET','POST'])
 def startPage():
     return render_template('points.html')
 

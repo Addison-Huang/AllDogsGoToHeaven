@@ -110,9 +110,11 @@ def checkAnswer():
     data=json.loads(data)
     title= data['items'][0]['title']
     link = data['items'][0]['link']
-    if useranswer.strip(' ').lower() == answer.lower():
-        return render_template('correct.html', link = link, title = title)
+    print(useranswer.strip(' ').lower())
+    print(answer.strip(' ').lower())
+    if useranswer.strip(' ').lower() == ' '.join(answer.strip(' ').lower().split('_')):
         timesWrong = 0
+        return render_template('correct.html', link = link, title = title)
     else:
         timesWrong += 1
         if timesWrong == 3:

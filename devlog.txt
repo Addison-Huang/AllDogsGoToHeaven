@@ -177,3 +177,8 @@ dennisC -- 2018-11-30 12:34
 Fixed a problem with multi-word answers not working, also added
 some play again buttons, started on added/subtracting points
 ==============================================================
+
+damian -- 2018-12-2 16:03
+--------------------------------------------------------------
+Created requirements.txt
+==============================================================

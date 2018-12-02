@@ -185,4 +185,16 @@ Created requirements.txt
 damian -- 2018-12-2 16:51
 --------------------------------------------------------------
 Added breadcrumbs with clickable home link
+Bug: When going back to home, username not transferred; will
+be fixed with db
+==============================================================
+damian -- 2018-12-2 18:32
+--------------------------------------------------------------
+FOUNDATION TIME
+Display place-holder high scores using disabled accordion
+Added call out with user's name
+Embedded content
+Added functioning playgame button
+Navbar now redirects user to parts of home page, rather than
+leading to different pages
 ==============================================================

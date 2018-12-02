@@ -5,6 +5,7 @@ import urllib.request
 import json
 import random
 import ssl
+import functions
 
 import sqlite3 #imports sqlite
 DB_FILE="data/quackamoo.db"

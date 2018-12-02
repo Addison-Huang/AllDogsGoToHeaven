@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
-{% block head %}<title> Home </title>{% endblock %}
+{% block head %}<title> Home </title>
+<nav aria-label="You are here:" role="navigation">
+  <ul class="breadcrumbs">
+      <span class="show-for-sr">Current: </span> Home
+    </li>
+  </ul>
+</nav>
+{% endblock %}
+
 {% block content %}
 <h1>Player:{{Name}}</h1>
 {% set msgs = get_flashed_messages() %}

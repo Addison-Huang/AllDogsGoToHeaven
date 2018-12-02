@@ -108,6 +108,7 @@ def checkAnswer():
     webURL=urllib.request.urlopen(urlData+key+urlData2,context=context)
     data=webURL.read()
     data=json.loads(data)
+    print(data)
     title= data['items'][0]['title']
     link = data['items'][0]['link']
     print(useranswer.strip(' ').lower())

@@ -1,26 +1,34 @@
 from util import db_updater as update
 from flask import Flask,render_template,request,session,url_for,redirect,flash
 from os import urandom
-import urllib.request
+import urllib
 import json
 import random
 import ssl
-import functions
 
 import sqlite3 #imports sqlite
-DB_FILE="data/quackamoo.db"
+'''
+DB_FILE="data/AllDogsGoToHeaven.db"
 db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
 c = db.cursor() #facilitates db operations
+'''
 
 app = Flask(__name__)
 app.secret_key = urandom(32)
 
+
 @app.route("/")
 def home():
-    if 'username' in session:
-        return render_template('home.html')
+    if 'username' in session: #if user is logged in
+        username = session['username']
+        return render_template('home.html', Name = username)
     else:
         return render_template('auth.html')
+
+@app.route("/logout")
+def logout():
+    session.pop('username')
+    return redirect(url_for('home'))
 
 @app.route("/auth",methods=['GET','POST'])
 def authPage():
@@ -96,6 +104,7 @@ timesWrong = 0
 @app.route('/check', methods = ['GET','POST'])
 def checkAnswer():
     global timesWrong
+    username = session['username']
     question = ' '.join(request.args['question'].split('_'))
     useranswer = request.form['useranswer']
     answer = request.form['answer']
@@ -116,11 +125,13 @@ def checkAnswer():
     print(answer.strip(' ').lower())
     if useranswer.strip(' ').lower() == ' '.join(answer.strip(' ').lower().split('_')):
         timesWrong = 0
+        update.addScore(username,100) #placeholder for now
         return render_template('correct.html', link = link, title = title)
     else:
         timesWrong += 1
         if timesWrong == 3:
             timesWrong = 0
+            update.subScore(username,100) #placeholder for now
             return render_template('results.html', answer = ' '.join(answer.split('_')),
                                     useranswer = useranswer, title = title, link = link)
         else:
@@ -133,6 +144,7 @@ def checkAnswer():
 @app.route('/search')
 def search_results():
     return
+
 
 if __name__ == '__main__':
     app.debug = True

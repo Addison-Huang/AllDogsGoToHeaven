@@ -4,7 +4,7 @@ import sqlite3
 from flask import request,session
 DB_FILE = "./data/AllDogsGoToHeaven.db"
 
-db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+db = sqlite3.connect(DB_FILE,check_same_thread=False) #open if file exists, otherwise create
 c = db.cursor() #facilitates db operations
 
 '''
@@ -28,10 +28,12 @@ function adds the point value of the question to the users score
 def addScore(username,score):
     command = "SELECT score FROM users WHERE users.username ='" + username + "';" #selects score of the user
     c.execute(command)
-    oldScore = c.fetchall()
-    newScore = oldScore + score 
-    command = "UPDATE users SET score = '" + newScore + "'WHERE users.username = '" + username + "';" #updates score
+    oldScore = c.fetchone()
+    newScore = oldScore[0] + score
+    command = "UPDATE users SET score = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
     c.execute(command)
+    db.commit()
+    db.close()
 
 '''
 subScore(username,score):
@@ -41,7 +43,7 @@ score is the point value of the question added
 function subtracts the point value of the question from the users score
 '''
 def subScore(username, score):
-    addScore(username, score * - 1)
+    addScore(username, score * -1)
 
 '''
 ansQuestion(username, question, answer)

@@ -1,77 +1,91 @@
 {% extends 'base.html' %}
 
 {% block head %}<title> Home </title>
-<div class = "breadcrumbs">
+<!--<div class = "breadcrumbs">
   <ul class="breadcrumbs">
     <li><a href = "/" >Home</a></li>
   </ul>
 </div>
+-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.0/css/foundation.css">
+
+<body style="background-color:#EDAE49;">
+  <div  style="background-color:#D14958;" class="top-bar">
+    <div  style="background-color:#D14958;" class="top-bar-left">
+      <ul style="background-color:#D14958;" class="dropdown menu">
+	<li style="color:black;">
+	  <a style="color:black;"  href="#"> Home </a>
+	</li>
+	<li>
+	  <a style="color:black;" href="#info"> Info </a>
+	</li>
+	<li>
+	  <a style="color:black;" href="points"> Play </a>
+	</li>
+		<li>
+	  <a style="color:black;" href="high"> High Scores </a>
+	</li>
+      </ul>
+    </div>
+  </div>
+  <br>
+    
 
 {% endblock %}
 
+    
+    
 {% block content %}
 {% set msgs = get_flashed_messages() %}
 	{% for each in msgs %}
 		<h2>{{each}}<h2>
 		<br>
-{% endfor %}
-<div class="grid-container">
-      <div class="grid-x grid-padding-x">
-        <div class="large-12 cell">
-					<div class="primary callout" data-closable>
-        	<h1>Welcome, {{Name}}!</h1>
-        <button class="close-button" aria-label="Close alert" type="button" data-close>
-	  <span aria-hidden="true">&times;</span>
-	</button>
+		{% endfor %}
+
+
+ <div class="grid-container">
+      <div class="grid-x grid padding-x">
+<div class="large-12 cell">
+ <div class= "primary callout" data-closable>
+   <h2> Welcome, {{Name}}! </h2>
+   <button class= "close-button" aria-label="Close alert" type="button" data-close>
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+</div>
       </div>
-        </div>
-      </div>
-    <div class= "top-bar">
-      <div class = "top-bar-left">
-        <ul class = "menu">
-          <li class = "menu-text" data-magellan>Nav Bar</li>
-          <li><a href = '#info'>Info</a>
-					<li><a href = '#intro'>Dose of nostalgia</a>
-					<li><a href = '#playgame'>Let's Play the Game!</a>
-					<li><a href = '#high'>High Scores</a>
-          <li><a href = '#'>
-						<form action="/logout">
-					  	<input type="submit" name="logoutbutton" value="logout">
-						</form></a></li>
-        </ul>
-      </div>
-		</div>
-		<div class="grid-x grid-padding-x" id = "info">
+
+    <div class="grid-x grid-padding-x" id = "info">
        <div class="large-6 medium-9 small-3 cell">
          <h1>Info</h1>
-				 <h4>Demonstrate some grid effects and introduce game!</h4>
+<h4>Demonstrate some grid effects and introduce game!</h4>
        </div>
      </div>
-		 <div class = "responsive-embed" id = "intro">
+<div class = "responsive-embed" id = "intro">
        <iframe width="200" height="100" src="https://www.youtube.com/embed/eNkvxqGmscY" frameborder="0"></iframe>
      </div>
-<div class = "Play game" id ="playgame">
-	<a href = "/points">Play Game!</a>
-</div>
+
 <h2>High Scores</h2>
 <div class = "high scores" id = "high">
-	<ul class="accordion" data-accordion disabled>
-  	<li class="accordion-item is-active" data-accordion-item>
-    	<a href="#high" class="accordion-title">High Score 1</a>
-  	</li>
-  	<li class="accordion-item" data-accordion-item disabled>
-    	<a href="#high" class="accordion-title">High Score 2</a>
-  	</li>
-  	<li class="accordion-item" data-accordion-item disabled>
-    	<a href="#high" class="accordion-title">High Score 3</a>
-  	</li>
-		<li class="accordion-item" data-accordion-item disabled>
-    	<a href="#high" class="accordion-title">High Score 4</a>
-  	</li>
-		<li class="accordion-item" data-accordion-item disabled>
-    	<a href="#high" class="accordion-title">High Score 5</a>
-  	</li>
-	</ul>
+<ul class="accordion" data-accordion disabled>
+  <li class="accordion-item is-active" data-accordion-item>
+    <a href="#high" class="accordion-title">High Score 1</a>
+  </li>
+  <li class="accordion-item" data-accordion-item disabled>
+    <a href="#high" class="accordion-title">High Score 2</a>
+  </li>
+  <li class="accordion-item" data-accordion-item disabled>
+    <a href="#high" class="accordion-title">High Score 3</a>
+  </li>
+<li class="accordion-item" data-accordion-item disabled>
+    <a href="#high" class="accordion-title">High Score 4</a>
+  </li>
+<li class="accordion-item" data-accordion-item disabled>
+    <a href="#high" class="accordion-title">High Score 5</a>
+  </li>
+</ul>
 </div>
+
 <br>
+   
 {% endblock %}

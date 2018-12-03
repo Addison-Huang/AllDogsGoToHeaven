@@ -83,10 +83,18 @@ def added():
 #----------------------------------------------------------playing the game--------------------------------------------------------
 @app.route('/points', methods = ['GET','POST'])
 def startPage():
+    '''Lets the user choose how many points the user want their question to be worth'''
     return render_template('points.html')
 
 @app.route('/question')
 def startGame():
+    '''Gives the user a question based on how many points the user choose
+
+    The question is retrieved from the jservice API
+    The category of the question is also given
+    The user is given a text box to write their answer in
+    '''
+    #gets a question from the jservice API
     value = list(dict(request.args).keys())[0]
     url = "http://jservice.io/api/clues?value=" + value
     readUrl = urllib.request.urlopen(url)
@@ -97,7 +105,9 @@ def startGame():
         if each == '&':
             question[question.index('&')] = 'and'
     question = ' '.join(question)
+    #gets the correct answer from the jservice api and strips is of italics
     answer = "_".join(data[randI]['answer'].strip('<i>').strip('</i>').split(" "))
+    #gets the category of the question
     category = data[randI]['category']['title']
     uCategory = '_'.join(category.split(' '))
     return render_template('question.html', question = question, category = category, answer = answer,
@@ -107,14 +117,27 @@ def startGame():
 timesWrong = 0
 @app.route('/check', methods = ['GET','POST'])
 def checkAnswer():
+    '''Checks if the user's answer is correct and shows the corresponding page
+
+    If the user's answer is correct, the user are redirected to a page saying the user're correct
+    If the user's answer is incorrect, the user are given another try, up to 3 tries total
+    On the 3rd try, if the user gets the question wrong, the user are redirected to a page
+    saying that the user are incorrect and shows them the correct answer.
+    For both pages, the user is given a google result that would give them more information;
+    this is done using a google search API.
+    If the user gets the question correct, the user are given the question's point value, but
+    if the user gets the question incorrect 3 times, their score is decreased by the question's
+    point value
+    '''
     global timesWrong
     username = session['username']
-    print(request.form['points'])
+    #gets information from hidden input in the question html and also the user's answer
     points = int(float(request.form['points']))
     question = ' '.join(request.args['question'].split('_'))
     useranswer = request.form['useranswer']
     answer = request.form['answer']
     category = ' '.join(request.form['uCategory'].split('_'))
+    #gets a search result from the google search API
     context = ssl._create_unverified_context()
     urlData="https://www.googleapis.com/customsearch/v1?key="
     key="AIzaSyDLFqAoBs-xQCm9XPVAlTsTa0jG8ewM57k"
@@ -126,20 +149,33 @@ def checkAnswer():
     data=json.loads(data)
     title= data['items'][0]['title']
     link = data['items'][0]['link']
-    if useranswer.strip(' ').lower() == ' '.join(answer.strip(' ').lower().split('_')):
+    #checks if the answer is correct or similar enough to the correct answer
+    useranswer = useranswer.strip(' ').lower().split(' ')
+    answer = answer.strip(' ').lower().split('_')
+    correct = True
+    #checks it by seeing if all the noncommon words in the user's answer are in the correct answer
+    for word in useranswer:
+        if word not in ['an','a','the','and']:
+            if word not in answer:
+                correct = False
+    if correct:
+        #if so increase the user's score and say that the user is correct
         timesWrong = 0
         update.addScore(username,points)
         return render_template('correct.html', link = link, title = title)
     else:
+        #otherwise check how many times the user got the question wrong and act accordingly
         timesWrong += 1
         if timesWrong == 3:
+            #if the user got it wrong 3 times, say that the user is incorrect and decrease the user's score
             timesWrong = 0
             update.subScore(username,points)
-            return render_template('results.html', answer = ' '.join(answer.split('_')),
-                                    useranswer = useranswer, title = title, link = link)
+            return render_template('results.html', answer = ' '.join(answer),
+                                    useranswer = ' '.join(useranswer), title = title, link = link)
         else:
+            #otherwise let them try again
             return render_template('question.html', question = question,
-                                    answer = answer, category = category,
+                                    answer = '_'.join(answer), category = category,
                                     link = '/check?question=' + request.args['question'],
                                     wrong = 'Incorrect, Tries Left:' + str(3 - timesWrong),
                                     uCategory = request.form['uCategory'], points = str(points))

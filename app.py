@@ -16,6 +16,7 @@ c = db.cursor() #facilitates db operations
 app = Flask(__name__)
 app.secret_key = urandom(32)
 
+#----------------------------------------------------------home--------------------------------------------------------
 
 @app.route("/")
 def home():
@@ -25,6 +26,7 @@ def home():
     else:
         return render_template('auth.html')
 
+#----------------------------------------------------------login/register/logout--------------------------------------------------------
 @app.route("/logout")
 def logout():
     session.pop('username')
@@ -54,6 +56,7 @@ def authPage():
 def reg():
      return render_template('reg.html')
 
+#----------------------------------------------------------database--------------------------------------------------------
 @app.route("/added",methods=['GET','POST'])
 def added():
     DB_FILE="data/AllDogsGoToHeaven.db"
@@ -77,6 +80,7 @@ def added():
         flash('Username Taken')
         return redirect(url_for('home'))
 
+#----------------------------------------------------------playing the game--------------------------------------------------------
 @app.route('/points', methods = ['GET','POST'])
 def startPage():
     return render_template('points.html')
@@ -98,13 +102,15 @@ def startGame():
     uCategory = '_'.join(category.split(' '))
     return render_template('question.html', question = question, category = category, answer = answer,
                             link = '/check?question=' + '_'.join(question.split(' ')),
-                            uCategory = uCategory)
+                            uCategory = uCategory, points = value)
 
 timesWrong = 0
 @app.route('/check', methods = ['GET','POST'])
 def checkAnswer():
     global timesWrong
     username = session['username']
+    print(request.form['points'])
+    points = int(float(request.form['points']))
     question = ' '.join(request.args['question'].split('_'))
     useranswer = request.form['useranswer']
     answer = request.form['answer']
@@ -118,20 +124,17 @@ def checkAnswer():
     webURL=urllib.request.urlopen(urlData+key+urlData2,context=context)
     data=webURL.read()
     data=json.loads(data)
-    print(data)
     title= data['items'][0]['title']
     link = data['items'][0]['link']
-    print(useranswer.strip(' ').lower())
-    print(answer.strip(' ').lower())
     if useranswer.strip(' ').lower() == ' '.join(answer.strip(' ').lower().split('_')):
         timesWrong = 0
-        update.addScore(username,100) #placeholder for now
+        update.addScore(username,points)
         return render_template('correct.html', link = link, title = title)
     else:
         timesWrong += 1
         if timesWrong == 3:
             timesWrong = 0
-            update.subScore(username,100) #placeholder for now
+            update.subScore(username,points)
             return render_template('results.html', answer = ' '.join(answer.split('_')),
                                     useranswer = useranswer, title = title, link = link)
         else:
@@ -139,7 +142,7 @@ def checkAnswer():
                                     answer = answer, category = category,
                                     link = '/check?question=' + request.args['question'],
                                     wrong = 'Incorrect, Tries Left:' + str(3 - timesWrong),
-                                    uCategory = request.form['uCategory'])
+                                    uCategory = request.form['uCategory'], points = str(points))
 
 @app.route('/search')
 def search_results():

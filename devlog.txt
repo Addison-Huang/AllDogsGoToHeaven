@@ -209,3 +209,10 @@ dennisC -- 2018-12-03 12:35
 Removed placeholders on add and subtract, made them worth the
 actual number of points for the question being answered
 ==============================================================
+
+dennisC -- 2018-12-03 18:49
+--------------------------------------------------------------
+Added comments on playing the game and started working on making
+similar answer work
+==============================================================
+

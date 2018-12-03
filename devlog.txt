@@ -198,3 +198,8 @@ Added functioning playgame button
 Navbar now redirects user to parts of home page, rather than
 leading to different pages
 ==============================================================
+addisonH -- 2018-12-2 21:08
+--------------------------------------------------------------
+Debugged code
+Adding and subtracting scores now works
+==============================================================

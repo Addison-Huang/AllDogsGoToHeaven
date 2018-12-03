@@ -10,11 +10,11 @@
 $ . <name-of-venv>/bin/activate
 ```
 #### 2. clone the repository
-⋅⋅* (https)
+(https)
 ```bash
 $ git clone https://github.com/Addison-Huang/AllDogsGoToHeaven.git
 ```
-⋅⋅* (ssh)
+(ssh)
 ```bash
 $ git clone git@github.com:Addison-Huang/AllDogsGoToHeaven.git
 ```

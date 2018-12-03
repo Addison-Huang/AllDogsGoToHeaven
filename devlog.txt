@@ -203,3 +203,9 @@ addisonH -- 2018-12-2 21:08
 Debugged code
 Adding and subtracting scores now works
 ==============================================================
+
+dennisC -- 2018-12-03 12:35
+--------------------------------------------------------------
+Removed placeholders on add and subtract, made them worth the
+actual number of points for the question being answered
+==============================================================

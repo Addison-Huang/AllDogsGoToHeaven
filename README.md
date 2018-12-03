@@ -12,20 +12,20 @@ $ . <name-of-venv>/bin/activate
 #### 2. clone the repository
 ..* (https)
 ```bash
-git clone https://github.com/Addison-Huang/AllDogsGoToHeaven.git
+$ git clone https://github.com/Addison-Huang/AllDogsGoToHeaven.git
 ```
 ..* (ssh)
 ```bash
-git clone git@github.com:Addison-Huang/AllDogsGoToHeaven.git
+$ git clone git@github.com:Addison-Huang/AllDogsGoToHeaven.git
 ```
 #### 3. install needed pip install
 ``` bash
-pip install -r AllDogsGoToHeaven/requirements.txt
+$ pip install -r AllDogsGoToHeaven/requirements.txt
 ```
 #### 4. run the flask app
 ```bash
-cd AllDogsGoToHeaven/
-python app.py
+$ cd AllDogsGoToHeaven/
+$ python app.py
 ```
 #### 5. open up the flask app in a preferred browser
 <http://127.0.0.1:5000/>

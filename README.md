@@ -6,9 +6,10 @@ A web based trivia game with questions straight from the JService API, an API wi
 
 ----
 ### How to run?
-#### 1. open up your virtual environment
-```
-$ . <name-of-venv>/bin/activate
+#### 1. create and open a your virtual environment
+```bash
+$ python3 -m venv woof
+$ . woof/bin/activate
 ```
 #### 2. clone the repository
 (https)
@@ -30,4 +31,11 @@ $ python app.py
 ```
 #### 5. open up the flask app in a preferred browser
 <http://127.0.0.1:5000/>
+
+----
+Why Passlib
+
+Link to the Passlib Documentation:https://passlib.readthedocs.io/en/stable/
+Passlib encrypts a password by hashing it and can also decrypt it for later verification. We decided to use this module as we thought any website that requires authentication, should not make passwords easily available to everyone who clones the repository. Passlib is used to encrypt passwords submitted on our website. The passwords are decrypted for verification when a user logs in.
+----
 

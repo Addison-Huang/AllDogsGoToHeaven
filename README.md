@@ -46,5 +46,4 @@ Jservice API: no api key <br>
 link to the documentation: <http://jservice.io/>
 
 Google Custom Search API: signg up for an api key @ <https://developers.google.com/custom-search/v1/overview#api_key>
-
 link to the documentation: <https://developers.google.com/custom-search/v1/overview>

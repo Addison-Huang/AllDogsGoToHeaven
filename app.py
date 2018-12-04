@@ -7,6 +7,7 @@ import ssl
 import urllib
 import json
 import random
+import difflib
 
 import sqlite3 #imports sqlite
 app = Flask(__name__)
@@ -61,7 +62,7 @@ def reg():
     Loads the template that takes information and allows user to register,
     creating a new account that they can sign into session with
     '''
-     return render_template('reg.html')
+    return render_template('reg.html')
 
 #----------------------------------------------------------database--------------------------------------------------------
 @app.route("/added",methods=['GET','POST'])
@@ -158,13 +159,29 @@ def checkAnswer():
     title= data['items'][0]['title']
     link = data['items'][0]['link']
     #checks if the answer is correct or similar enough to the correct answer
-    useranswer = useranswer.strip(' ').lower().split(' ')
+    cWords = ['an','a','the','and']
     answer = answer.strip(' ').lower().split('_')
+    useranswer = useranswer.strip(' ').lower().split(' ')
+    print(answer)
+    print(useranswer)
+    for word in cWords:
+        for ans in answer:
+            if word == ans:
+                answer.remove(word)
+        for uAns in useranswer:
+            if word == uAns:
+                useranswer.remove(word)
+    useranswer = ' '.join(useranswer)
+    answer = ' '.join(answer)
+    seq = difflib.SequenceMatcher(None,a = answer, b= useranswer)
+    dif = seq.ratio() * 100
+    useranswer = useranswer.split(' ')
+    answer = answer.split(' ')
     correct = True
-    #checks it by seeing if all the noncommon words in the user's answer are in the correct answer
+    #checks it by seeing if all the noncommon words in the user's answer are in the correct answer and if the match between the strings is lower than 85%
     for word in useranswer:
-        if word not in ['an','a','the','and']:
-            if word not in answer:
+        if word not in cWords:
+            if (word not in answer and dif < 95.0) or dif < 85.0:
                 correct = False
     if correct:
         #if so increase the user's score and say that the user is correct

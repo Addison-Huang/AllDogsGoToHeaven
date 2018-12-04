@@ -42,6 +42,18 @@ def username(username):
     c.execute(user_exists,(username,))
     userList = c.fetchall()
     return userList
+
+'''
+score(username)
+'''
+def score(username):
+    DB_FILE="data/AllDogsGoToHeaven.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+    user_exists = 'SELECT score FROM users WHERE users.username = (?);'
+    c.execute(user_exists,(username,))
+    score = c.fetchone()
+    return score
         
         
         

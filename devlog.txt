@@ -236,3 +236,10 @@ damianW -- 2018-12-03 23:13
 Trimmed requirements.txt
 Added comments to all functions in app.py
 ==============================================================
+
+dennisC -- 2018-12-04 12:38
+--------------------------------------------------------------
+Finished checking if the user answer and the correct answer
+were similar by removing a few common words from both and
+checking the similarity between the 2 strings
+==============================================================

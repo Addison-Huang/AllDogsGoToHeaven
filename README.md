@@ -40,4 +40,11 @@ Passlib encrypts a password by hashing it and can also decrypt it for later veri
 
 ----
 
+#### Procuring API Keys
 
+Jservice API: no api key
+link to the documentation: <http://jservice.io/>
+
+Google Custom Search API: signg up for an api key @ <https://developers.google.com/custom-search/v1/overview#api_key>
+
+link to the documentation: <https://developers.google.com/custom-search/v1/overview>

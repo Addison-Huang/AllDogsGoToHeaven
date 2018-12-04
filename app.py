@@ -1,23 +1,19 @@
-from util import db_updater as update
 from flask import Flask,render_template,request,session,url_for,redirect,flash
 from os import urandom
+from util import db_updater as update
+from util import db_search as search
+from passlib.hash import sha256_crypt
+import ssl
 import urllib
 import json
 import random
-import ssl
 
 import sqlite3 #imports sqlite
-'''
-DB_FILE="data/AllDogsGoToHeaven.db"
-db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-c = db.cursor() #facilitates db operations
-'''
-
 app = Flask(__name__)
 app.secret_key = urandom(32)
 
-#----------------------------------------------------------home--------------------------------------------------------
 
+#----------------------------------------------------------home--------------------------------------------------------
 @app.route("/")
 def home():
     if 'username' in session: #if user is logged in
@@ -34,23 +30,18 @@ def logout():
 
 @app.route("/auth",methods=['GET','POST'])
 def authPage():
-    DB_FILE="data/AllDogsGoToHeaven.db"
-    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-    c = db.cursor()
-    username=request.form['username']
-    command = 'SELECT password FROM users WHERE users.username = "{0}"'.format(username)
-    c.execute(command)
-    password = c.fetchone()
-    print(password[0])
-    if password == []:
+    username=request.form['username'] #username
+    password = search.password(username) #password that matches the username
+    if password == None: #if credentials are incorrect
         flash('incorrect credentials')
-        return redirect(url_for('home'))
-    elif request.form['password'] == password[0]:
+        return redirect(url_for('home')) #redirects
+    elif sha256_crypt.verify(request.form['password'], password[0]): #if password is correct, login
         session['username'] = username
         return render_template('home.html', Name = username)
-    else:
+    else: #else credentials are wrong
         flash('incorrect credentials')
         return redirect(url_for('home'))
+
 
 @app.route("/reg",methods=['GET','POST'])
 def reg():
@@ -59,26 +50,16 @@ def reg():
 #----------------------------------------------------------database--------------------------------------------------------
 @app.route("/added",methods=['GET','POST'])
 def added():
-    DB_FILE="data/AllDogsGoToHeaven.db"
     newUsername = request.form['username']
-    newPassword = request.form['password']
-    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-    c = db.cursor()
-    command = 'SELECT username FROM users;'
-    c.execute(command)
-    userList = c.fetchall()
-    print(userList)
-    if newUsername not in userList:
-        insert = "INSERT INTO users VALUES(?,?,?)"
-        params=(newUsername,newPassword,0)
-        c.execute(insert,params)
-        db.commit()
-        db.close()
-        #session['username'] = newUsername
+    newPassword = sha256_crypt.encrypt(request.form['password']) #encrypts password
+    userList = search.username(newUsername)
+    if userList == [] : #if username isn't taken
+        update.adduser(newUsername,newPassword) #add to database
         return redirect(url_for('home'))
-    else:
+    else: #if username is taken
         flash('Username Taken')
-        return redirect(url_for('home'))
+        return redirect(url_for('reg'))
+
 
 #----------------------------------------------------------playing the game--------------------------------------------------------
 @app.route('/points', methods = ['GET','POST'])

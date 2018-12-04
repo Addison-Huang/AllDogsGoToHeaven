@@ -2,11 +2,6 @@
 
 import sqlite3
 from flask import request,session
-DB_FILE = "./data/AllDogsGoToHeaven.db"
-
-db = sqlite3.connect(DB_FILE,check_same_thread=False) #open if file exists, otherwise create
-c = db.cursor() #facilitates db operations
-
 '''
 adduser(username,password)
 params:username, password
@@ -15,8 +10,14 @@ password is the password of the user
 function adds the username and password to the users database
 '''
 def adduser(username, password):
-    command = "INSERT INTO users VALUES(" + '"' + username + '", "' + password + '"' +'0)'
-    c.execute(command)
+    DB_FILE="data/AllDogsGoToHeaven.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+    insert = "INSERT INTO users VALUES(?,?,?)"
+    params=(username,password,0)
+    c.execute(insert,params)
+    db.commit()
+    db.close()
 
 '''
 addScore(username,score):
@@ -26,6 +27,9 @@ score is the point value of the question added
 function adds the point value of the question to the users score
 '''
 def addScore(username,score):
+    DB_FILE="data/AllDogsGoToHeaven.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
     command = "SELECT score FROM users WHERE users.username ='" + username + "';" #selects score of the user
     c.execute(command)
     oldScore = c.fetchone()
@@ -33,6 +37,7 @@ def addScore(username,score):
     command = "UPDATE users SET score = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
     c.execute(command)
     db.commit()
+    db.close()
 '''
 subScore(username,score):
 params:username, score
@@ -52,6 +57,10 @@ answer is api provided answer for the question
 '''
 
 def ansQuestion(username, question, answer):
+    DB_FILE="data/AllDogsGoToHeaven.db"
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
     insert = "INSERT INTO questions VALUES(?,?,?)"
     params = (username, question,username)
     c.execute(insert, params)
+    db.commit()

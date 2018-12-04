@@ -2,38 +2,150 @@
 
 
 {% block head %}
+<!--
   <ul class="breadcrumbs">
     <li><a href = "/" >Home</a></li>
     <li>
       <span class="show-for-sr">Current: </span> Play Game
     </li>
   </ul>
+  -->
+<body style="background-color:#EDAE49;">
+
+
+ <div  style="background-color:#D14958;" class="top-bar">
+    <div  style="background-color:#D14958;" class="top-bar-left">
+      <ul style="background-color:#D14958;" class="dropdown menu">
+	<li style="color:black;">
+	  <a style="color:black;"  href="#"> Home </a>
+	</li>
+	<li>
+	  <a style="color:black;" href="#info"> Info </a>
+	</li>
+		<li>
+	  <a style="color:black;" href="points"> Play </a>
+	</li>
+		<li>
+	  <a style="color:black;" href="#high"> High Scores </a>
+		</li>
+		   <li><a href = "/logout" style="color:black;"> Log Out</a>
+</li>
+      </ul>
+    </div>
+  </div>
+  <br>
+
+  
   <title>Points</title>
   <h1>How Much Do You Want Your Question to Be Worth?</h1>
 {% endblock %}
-{% block content %}
+  {% block content %}
+
+              <div class="grid-x grid-padding-x">
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+
+		    
+		      <center>
 <form action="/question">
   <input type="submit" name="100" value="100pts">
 </form>
+</center>
+		   
+		  </div>
+		</div>
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+		    <center>
 <form action="/question">
   <input type="submit" name="200" value="200pts">
 </form>
-<form action="/question">
+		    </center>
+		  </div>
+		</div>
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+<center>
+		  <form action="/question">
   <input type="submit" name="300" value="300pts">
-</form>
+		  </form>
+		  </center>
+		  </div>
+		</div>
+              </div>
+
+ 
+
+              <div class="grid-x grid-padding-x">
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+
+		    
+		      <center>
 <form action="/question">
   <input type="submit" name="400" value="400pts">
 </form>
+</center>
+		   
+		  </div>
+		</div>
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+		    <center>
 <form action="/question">
   <input type="submit" name="500" value="500pts">
 </form>
-<form action="/question">
+		    </center>
+		  </div>
+		</div>
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+<center>
+		  <form action="/question">
   <input type="submit" name="600" value="600pts">
-</form>
+		  </form>
+		  </center>
+		  </div>
+		</div>
+              </div>
+	      
+
+              <div class="grid-x grid-padding-x">
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+
+		    
+		      <center>
 <form action="/question">
   <input type="submit" name="800" value="800pts">
 </form>
+</center>
+		   
+		  </div>
+		</div>
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+		    <center>
 <form action="/question">
   <input type="submit" name="1000" value="1000pts">
 </form>
+		    </center>
+		  </div>
+		</div>
+		<div class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#003D58; color:white;" class="primary callout">
+<center>
+		  <form action="/question">
+  <input type="submit" name="100" value="100pts">
+		  </form>
+		  </center>
+		  </div>
+		</div>
+              </div>
+
+ 
+
+
+ 
+
 {% endblock %}

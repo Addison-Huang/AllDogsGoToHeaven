@@ -214,5 +214,14 @@ dennisC -- 2018-12-03 18:49
 --------------------------------------------------------------
 Added comments on playing the game and started working on making
 similar answer work
+
+==============================================================
+
+claireL -- 2018-12-03 19:49
+--------------------------------------------------------------
+Added foundation to home and points page. Added navbar to all pages. Bug where scores of 700 and 900 don't work. I think it's because they aren't real scores in jeapordy.
+
+Fixed show password and added a little bit of javascript so it would work.
+
 ==============================================================
 

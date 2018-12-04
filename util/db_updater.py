@@ -33,8 +33,6 @@ def addScore(username,score):
     command = "UPDATE users SET score = '" + str(newScore) + "'WHERE users.username = '" + username + "';" #updates score
     c.execute(command)
     db.commit()
-    db.close()
-
 '''
 subScore(username,score):
 params:username, score
@@ -57,23 +55,3 @@ def ansQuestion(username, question, answer):
     insert = "INSERT INTO questions VALUES(?,?,?)"
     params = (username, question,username)
     c.execute(insert, params)
-    
-    
-    
-    
-
-
-
-
-    
-    
-    
-    
-    
-
-    
-    
-    
-
-
-

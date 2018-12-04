@@ -16,6 +16,9 @@ app.secret_key = urandom(32)
 #----------------------------------------------------------home--------------------------------------------------------
 @app.route("/")
 def home():
+    '''
+    Home route; if user is signed into session, they will see game home screen. If not, they will be redirected to login screen
+    '''
     if 'username' in session: #if user is logged in
         username = session['username']
         score = search.score(username)[0]
@@ -26,11 +29,18 @@ def home():
 #----------------------------------------------------------login/register/logout--------------------------------------------------------
 @app.route("/logout")
 def logout():
+    '''
+    Logs user out of session by popping them from the session. Returns user to log-in screen
+    '''
     session.pop('username')
     return redirect(url_for('home'))
 
 @app.route("/auth",methods=['GET','POST'])
 def authPage():
+    '''
+    Authenticates user signing in. Checks to see if password is correct or not;
+    if correct, logs user in. If not, flashes "incorrect credentials"
+    '''
     username=request.form['username'] #username
     password = search.password(username) #password that matches the username
     if password == None: #if credentials are incorrect
@@ -47,11 +57,20 @@ def authPage():
 
 @app.route("/reg",methods=['GET','POST'])
 def reg():
+    '''
+    Loads the template that takes information and allows user to register,
+    creating a new account that they can sign into session with
+    '''
      return render_template('reg.html')
 
 #----------------------------------------------------------database--------------------------------------------------------
 @app.route("/added",methods=['GET','POST'])
 def added():
+    '''
+    Checks to see if username is unique,
+    flashes "username taken" if it is,
+    adds user and password to database if not and sends to home
+    '''
     newUsername = request.form['username']
     newPassword = sha256_crypt.encrypt(request.form['password']) #encrypts password
     userList = search.username(newUsername)
@@ -66,10 +85,14 @@ def added():
 #----------------------------------------------------------playing the game--------------------------------------------------------
 @app.route('/points', methods = ['GET','POST'])
 def startPage():
+
     '''Lets the user choose how many points the user want their question to be worth'''
     username = session['username']
     score = search.score(username)[0]
     return render_template('points.html',Points = score)
+    '''Game time! Lets the user choose how many points the user want their question to be worth'''
+    return render_template('points.html')
+
 
 @app.route('/question')
 def startGame():
@@ -164,10 +187,6 @@ def checkAnswer():
                                     link = '/check?question=' + request.args['question'],
                                     wrong = 'Incorrect, Tries Left:' + str(3 - timesWrong),
                                     uCategory = request.form['uCategory'], points = str(points))
-
-@app.route('/search')
-def search_results():
-    return
 
 
 if __name__ == '__main__':

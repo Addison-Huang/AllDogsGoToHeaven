@@ -18,7 +18,8 @@ app.secret_key = urandom(32)
 def home():
     if 'username' in session: #if user is logged in
         username = session['username']
-        return render_template('home.html', Name = username)
+        score = search.score(username)[0]
+        return render_template('home.html', Name = username,Points = score )
     else:
         return render_template('auth.html')
 
@@ -37,7 +38,8 @@ def authPage():
         return redirect(url_for('home')) #redirects
     elif sha256_crypt.verify(request.form['password'], password[0]): #if password is correct, login
         session['username'] = username
-        return render_template('home.html', Name = username)
+        score = search.score(username)[0]
+        return render_template('home.html', Name = username, Points = score)
     else: #else credentials are wrong
         flash('incorrect credentials')
         return redirect(url_for('home'))
@@ -65,7 +67,9 @@ def added():
 @app.route('/points', methods = ['GET','POST'])
 def startPage():
     '''Lets the user choose how many points the user want their question to be worth'''
-    return render_template('points.html')
+    username = session['username']
+    score = search.score(username)[0]
+    return render_template('points.html',Points = score)
 
 @app.route('/question')
 def startGame():

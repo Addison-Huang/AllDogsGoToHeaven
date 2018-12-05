@@ -15,6 +15,15 @@ app = Flask(__name__)
 app.secret_key = urandom(32)
 
 builder.main()
+
+#----------------------------------------------------------getKey--------------------------------------------------------
+def getKey():
+    try:
+        with open('keys.json') as f:
+            data = json.load(f)
+        return data['googleapi']
+    except:
+        pass
 #----------------------------------------------------------home--------------------------------------------------------
 @app.route("/",methods=['GET','POST'])
 def home():
@@ -179,7 +188,7 @@ def checkAnswer():
         try:
             context = ssl._create_unverified_context()
             urlData="https://www.googleapis.com/customsearch/v1?key="
-            key="AIzaSyDLFqAoBs-xQCm9XPVAlTsTa0jG8ewM57k"
+            key= getKey()
             query = answer
             temp = "&cx=009364855531151632334:atzshazndou&q=" + query
             urlData2=temp
@@ -189,14 +198,12 @@ def checkAnswer():
             title= data['items'][0]['title']
             link = data['items'][0]['link']
         except:
-            title = "No content found"
+            title = "No content found or no API key given"
             link = "https://playmeadowlands.com/generic.aspx?id=16034"
         #checks if the answer is correct or similar enough to the correct answer
         cWords = ['an','a','the','and']
         answer = answer.strip(' ').lower().split('_')
         useranswer = useranswer.strip(' ').lower().split(' ')
-        print(answer)
-        print(useranswer)
         for word in cWords:
             for ans in answer:
                 if word == ans:
@@ -216,7 +223,7 @@ def checkAnswer():
         #checks it by seeing if all the noncommon words in the user's answer are in the correct answer and if the match between the strings is lower than 85%
         for word in useranswer:
             if word not in cWords:
-                if (word not in answer and dif < 95.0) or dif < 85.0:
+                if (word not in answer and dif < 85.0) or dif < 75.0:
                     correct = False
         if correct:
         #if so increase the user's score and say that the user is correct

@@ -262,5 +262,8 @@ Added redirects
 ==============================================================
 damianW -- 2018-12-04 23:46
 --------------------------------------------------------------
-Added try and except blocks for google search API
+Added try and except blocks for google search API;
+catches cases where search engine doesn't return results
+Worked on appearance of other templates
+BUG: sometimes question gets cut off after you get wrong answer
 ==============================================================

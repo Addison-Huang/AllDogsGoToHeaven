@@ -16,27 +16,16 @@
  <div  style="background-color:#D14958;" class="top-bar">
     <div  style="background-color:#D14958;" class="top-bar-left">
       <ul style="background-color:#D14958;" class="dropdown menu">
-	<li style="color:black;">
-	  <a style="color:black;"  href="#"> Home </a>
-	</li>
-	<li>
-	  <a style="color:black;" href="#info"> Info </a>
-	</li>
-		<li>
-	  <a style="color:black;" href="points"> Play </a>
-	</li>
-		<li>
-	  <a style="color:black;" href="#high"> High Scores </a>
-		</li>
-		   <li><a href = "/logout" style="color:black;"> Log Out</a>
-		   </li>
-		   <li> <b>Your score: {{Points}}</b> </li>
-      </ul>
+          <li><a href = "/auth" >Home</a></li>
+          <li><a href = "/logout" style="color:black;"> Log Out</a>
+   		   </li>
+   		   <li> <b>Your score: {{Points}}</b> </li>
+        </ul>
     </div>
   </div>
   <br>
 
-  
+
   <title>Points</title>
   <h1>How Much Do You Want Your Question to Be Worth?</h1>
 {% endblock %}
@@ -46,13 +35,13 @@
 		<div class="large-4 medium-4 small-4 cell">
 		  <div style="background-color:#003D58; color:white;" class="primary callout">
 
-		    
+
 		      <center>
 <form action="/question">
   <input type="submit" name="100" value="100pts">
 </form>
 </center>
-		   
+
 		  </div>
 		</div>
 		<div class="large-4 medium-4 small-4 cell">
@@ -75,19 +64,19 @@
 		</div>
               </div>
 
- 
+
 
               <div class="grid-x grid-padding-x">
 		<div class="large-4 medium-4 small-4 cell">
 		  <div style="background-color:#003D58; color:white;" class="primary callout">
 
-		    
+
 		      <center>
 <form action="/question">
   <input type="submit" name="400" value="400pts">
 </form>
 </center>
-		   
+
 		  </div>
 		</div>
 		<div class="large-4 medium-4 small-4 cell">
@@ -109,19 +98,19 @@
 		  </div>
 		</div>
               </div>
-	      
+
 
               <div class="grid-x grid-padding-x">
 		<div class="large-4 medium-4 small-4 cell">
 		  <div style="background-color:#003D58; color:white;" class="primary callout">
 
-		    
+
 		      <center>
 <form action="/question">
   <input type="submit" name="800" value="800pts">
 </form>
 </center>
-		   
+
 		  </div>
 		</div>
 		<div class="large-4 medium-4 small-4 cell">
@@ -144,9 +133,9 @@
 		</div>
               </div>
 
- 
 
 
- 
+
+
 
 {% endblock %}

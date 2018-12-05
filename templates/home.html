@@ -20,7 +20,7 @@
 	  <a style="color:black;" href="#info"> Info </a>
 	</li>
 	<li>
-	  <a style="color:black;" href="points"> Play </a>
+	  <a style="color:black;" href="#game"> Play </a>
 	</li>
 		<li>
 	  <a style="color:black;" href="#high"> High Scores </a>
@@ -37,12 +37,12 @@
     </div>
   </div>
   <br>
-    
+
 
 {% endblock %}
 
-    
-    
+
+
 {% block content %}
 {% set msgs = get_flashed_messages() %}
 	{% for each in msgs %}
@@ -54,9 +54,9 @@
  <div class="grid-container">
    <div class="grid-x grid padding-x">
 
-<div class="large-12 cell">
+<div class="large-12 cell" id = "info">
  <div class= "primary callout data-closable">
-   <h2> Welcome to Jeapordy, {{Name}}! </h2>
+   <h2> Welcome to Jeopardy, {{Name}}! </h2>
    <button class= "close-button" aria-label="Close alert" type="button" data-close>
      <span aria-hidden="true">&times;</span>
    </button>
@@ -64,18 +64,18 @@
 </div>
       </div>
 
-   
+
         <h1>How to Play</h1>
 
  <div class="grid-x grid-padding-x">
 		<div class="large-4 medium-4 small-4 cell">
 		  <div style="background-color:#003D58; color:white;" class="primary callout">
 
-		    
+
 		      <center>
 Step One: Once you press play game, you'll be prompted with some grids asking you to choose a point value. Points range from 100 to 1000 and correspond to difficulty.
 </center>
-		   
+
 		  </div>
 		</div>
 		<div class="large-4 medium-4 small-4 cell">
@@ -91,17 +91,14 @@ Step Two: More stuff
 		  Step Three: More stuff
 		  </center>
 		  </div>
-		
-              
 
 
-	
+
+
+
        </div>
      </div>
-    <div  id = "intro"> <a href="points">
-      <button type="button" class="success button expanded">Play Now!</button></a>
-    
-     </div>
+
 
 <h2>High Scores</h2>
 <div class = "high scores" id = "high">
@@ -121,7 +118,11 @@ Step Two: More stuff
   </table>
 
 </div>
+<div  id = "game"> <a href="points">
+  <button type="button" class="success button expanded">Play Now!</button></a>
+
+ </div>
 
 <br>
-   
+
 {% endblock %}

@@ -12,6 +12,7 @@
   <title>Question</title>
 {% endblock %}
 {% block content %}
+  <body style="background-color:#EDAE49;">
   <h3>Question: {{question}}<br>Category: {{category}}</h3>
   <h4>{{wrong}}</h4>
   <form action = {{link}} method = "POST">
@@ -20,4 +21,5 @@
     <input type = 'hidden' name = 'uCategory' value = {{uCategory}}>
     <input type = 'hidden' name = 'points' value = {{points}}>
   </form>
+  </body>
 {% endblock %}

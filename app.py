@@ -153,7 +153,7 @@ def startGame():
             uCategory = '_'.join(category.split(' '))
             return render_template('question.html', question = question, category = category, answer = answer,
                            link = '/check?question=' + '_'.join(question.split(' ')),
-                           uCategory = uCategory, points = value)
+                           uCategory = uCategory, points = value,Points = search.score(username)[0])
         else:
             return startGame()
     else:
@@ -247,7 +247,8 @@ def checkAnswer():
                                    answer = '_'.join(answer), category = category,
                                    link = '/check?question=' + request.args['question'],
                                    wrong = 'Incorrect, Tries Left:' + str(3 - timesWrong),
-                                   uCategory = request.form['uCategory'], points = str(points))
+                                   uCategory = request.form['uCategory'], points = str(points),
+                                   Points = score)
     else:
         return redirect(url_for('home'))
 

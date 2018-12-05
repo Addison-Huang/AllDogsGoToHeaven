@@ -267,3 +267,7 @@ catches cases where search engine doesn't return results
 Worked on appearance of other templates
 BUG: sometimes question gets cut off after you get wrong answer
 ==============================================================
+damianW -- 2018-12-05 12:18
+--------------------------------------------------------------
+Fixed up navbar across all files
+==============================================================

@@ -113,7 +113,7 @@ def startPage():
     return redirect(url_for('home'))
 '''Game time! Lets the user choose how many points the user want their question to be worth'''
 
-@app.route('/question')
+@app.route('/question', methods = {"GET", "POST"})
 def startGame():
     '''Gives the user a question based on how many points the user choose
 

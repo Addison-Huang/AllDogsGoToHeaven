@@ -253,3 +253,10 @@ added grids to include how to play the game. Added your score in
 the navbar and the database.
 
 ==============================================================
+
+addisonH -- 2018-12-04 22:17
+--------------------------------------------------------------
+Fixed routes to be the same
+Added high scores
+Added redirects
+==============================================================

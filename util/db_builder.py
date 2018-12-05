@@ -1,14 +1,16 @@
 import sqlite3 #imports sqlite
 
-DB_FILE="../data/AllDogsGoToHeaven.db" 
-db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
-c = db.cursor() #facilitates db operations
-
 def users(): #creates the users db
+    DB_FILE="/data/AllDogsGoToHeaven.db" 
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor() #facilitates db operations
     command = "CREATE TABLE users(username TEXT, password TEXT, score INTEGER)"
     c.execute(command)
 
 def questions(): #creates the questions db
+    DB_FILE="/data/AllDogsGoToHeaven.db" 
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor() #facilitates db operations
     command = "CREATE TABLE questions(username TEXT, question TEXT, answer TEXT)"
     c.execute(command)
 

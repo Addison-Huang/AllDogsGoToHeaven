@@ -10,11 +10,11 @@ def highScores():
     DB_FILE="data/AllDogsGoToHeaven.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    command = "SELECT scores from users"
+    command = "SELECT score, username from users"
     c.execute(command)
-    scores = c.fetchall().sort(reverse=True) #retrieves the scores in descending order
-    return scores[0:10]
-
+    scores = c.fetchall() #retrieves the scores in descending order
+    scores.sort(reverse=True)
+    return scores[0:5]
 '''
 password(username)
 returns the password that matches the username if one exists

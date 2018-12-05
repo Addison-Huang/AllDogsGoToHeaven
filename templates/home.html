@@ -105,23 +105,21 @@ Step Two: More stuff
 
 <h2>High Scores</h2>
 <div class = "high scores" id = "high">
-<ul class="accordion" data-accordion disabled>
-  <li class="accordion-item is-active" data-accordion-item>
-    <a href="#high" class="accordion-title">High Score 1</a>
-  </li>
-  <li class="accordion-item" data-accordion-item disabled>
-    <a href="#high" class="accordion-title">High Score 2</a>
-  </li>
-  <li class="accordion-item" data-accordion-item disabled>
-    <a href="#high" class="accordion-title">High Score 3</a>
-  </li>
-<li class="accordion-item" data-accordion-item disabled>
-    <a href="#high" class="accordion-title">High Score 4</a>
-  </li>
-<li class="accordion-item" data-accordion-item disabled>
-    <a href="#high" class="accordion-title">High Score 5</a>
-  </li>
-</ul>
+  <table>
+    <tr>
+      <td> Username: </td>
+      {% for name in names %}
+      <td> {{name}} </td>
+      {% endfor %}
+    </tr>
+    <tr>
+      <td> Score: </td>
+    {% for score in scores %}
+      <td> {{score}} </td>
+      {% endfor %}
+    </tr>
+  </table>
+
 </div>
 
 <br>

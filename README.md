@@ -47,3 +47,8 @@ link to the documentation: <http://jservice.io/>
 
 Google Custom Search API: sign up for an api key @ <https://developers.google.com/custom-search/v1/overview#api_key>
 link to the documentation: <https://developers.google.com/custom-search/v1/overview>
+
+----
+
+#### Using API Keys
+As of right now, Team AllDogsGoHeaven has their api keys stored in keys.json. The user can input their api key into keys.json so that the flask app works.

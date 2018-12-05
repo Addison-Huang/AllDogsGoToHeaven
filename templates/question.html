@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+ <div  style="background-color:#D14958;" class="top-bar">
+    <div  style="background-color:#D14958;" class="top-bar-left">
+      <ul style="background-color:#D14958;" class="dropdown menu">
+	<li style="color:black;">
+	  <a style="color:black;"  href="/auth"> Home </a>
+	</li>
+
+	<li><a href = "/logout" style="color:black;"> Log Out</a>
+	</li>
+	<li>  <a style="color:black;"> Your Score: {{Points}}  </a>
+	</li>
+   		 
+        </ul>
+    </div>
+  </div>
+
+  <title>Question</title>
+{% endblock %}
+{% block content %}
+  <body style="background-color:#EDAE49;">
+  <h3>Question: {{question}}<br>Category: {{category}}</h3>
+  <h4>{{wrong}}</h4>
+  <form action = {{link}} method = "POST">
+    Answer:<input type = 'text' name = 'useranswer'>
+    <input type = 'hidden' name = 'answer' value = {{answer}}>
+    <input type = 'hidden' name = 'uCategory' value = {{uCategory}}>
+    <input type = 'hidden' name = 'points' value = {{points}}>
+  </form>
+  </body>
+{% endblock %}

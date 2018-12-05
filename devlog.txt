@@ -270,4 +270,12 @@ BUG: sometimes question gets cut off after you get wrong answer
 damianW -- 2018-12-05 12:18
 --------------------------------------------------------------
 Fixed up navbar across all files
+
+==============================================================
+claireL -- 2018-12-05 12:23
+--------------------------------------------------------------
+Added a gitignore file to get rid of the .pyc files that kept causing
+merge conflicts.
+Fixed the navbar and the high score table so it was vertical.
+Worked on breadcrumbs. Made music autoplay!
 ==============================================================

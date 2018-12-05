@@ -169,17 +169,21 @@ def checkAnswer():
         answer = request.form['answer']
         category = ' '.join(request.form['uCategory'].split('_'))
         #gets a search result from the google search API
-        context = ssl._create_unverified_context()
-        urlData="https://www.googleapis.com/customsearch/v1?key="
-        key="AIzaSyDLFqAoBs-xQCm9XPVAlTsTa0jG8ewM57k"
-        query = answer
-        temp = "&cx=009364855531151632334:atzshazndou&q=" + query
-        urlData2=temp
-        webURL=urllib.request.urlopen(urlData+key+urlData2,context=context)
-        data=webURL.read()
-        data=json.loads(data)
-        title= data['items'][0]['title']
-        link = data['items'][0]['link']
+        try:
+            context = ssl._create_unverified_context()
+            urlData="https://www.googleapis.com/customsearch/v1?key="
+            key="AIzaSyDLFqAoBs-xQCm9XPVAlTsTa0jG8ewM57k"
+            query = answer
+            temp = "&cx=009364855531151632334:atzshazndou&q=" + query
+            urlData2=temp
+            webURL=urllib.request.urlopen(urlData+key+urlData2,context=context)
+            data=webURL.read()
+            data=json.loads(data)
+            title= data['items'][0]['title']
+            link = data['items'][0]['link']
+        except:
+            title = "No content found"
+            link = "https://playmeadowlands.com/generic.aspx?id=16034"
         #checks if the answer is correct or similar enough to the correct answer
         cWords = ['an','a','the','and']
         answer = answer.strip(' ').lower().split('_')

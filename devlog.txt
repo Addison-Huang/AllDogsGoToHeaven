@@ -260,3 +260,7 @@ Fixed routes to be the same
 Added high scores
 Added redirects
 ==============================================================
+damianW -- 2018-12-04 23:46
+--------------------------------------------------------------
+Added try and except blocks for google search API
+==============================================================

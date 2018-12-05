@@ -2,16 +2,22 @@
 
 
 {% block head %}
-<div class = "header">
-  <div  style="background-color:#D14958;" class="top-bar-left">
-    <ul style="background-color:#D14958;" class="dropdown menu">
-        <li><a href = "/auth" >Home</a></li>
-        <li><a href = "/logout" style="color:black;"> Log Out</a>
-       </li>
-       <li> <b>Your score: {{points}}</b> </li>
-      </ul>
+ <div  style="background-color:#D14958;" class="top-bar">
+    <div  style="background-color:#D14958;" class="top-bar-left">
+      <ul style="background-color:#D14958;" class="dropdown menu">
+	<li style="color:black;">
+	  <a style="color:black;"  href="/auth"> Home </a>
+	</li>
+
+	<li><a href = "/logout" style="color:black;"> Log Out</a>
+	</li>
+	<li>  <a style="color:black;"> Your Score: {{Points}}  </a>
+	</li>
+   		 
+        </ul>
+    </div>
   </div>
-   </div>
+
   <title>Question</title>
 {% endblock %}
 {% block content %}

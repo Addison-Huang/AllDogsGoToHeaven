@@ -56,11 +56,11 @@ question is the question the user answered
 answer is api provided answer for the question
 '''
 
-def ansQuestion(username, question, answer):
+def ansQuestion(username, question):
     DB_FILE="data/AllDogsGoToHeaven.db"
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
-    insert = "INSERT INTO questions VALUES(?,?,?)"
-    params = (username, question,username)
+    insert = "INSERT INTO questions VALUES(?,?)"
+    params = (username, question)
     c.execute(insert, params)
     db.commit()

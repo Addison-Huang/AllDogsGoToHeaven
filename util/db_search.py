@@ -54,6 +54,18 @@ def score(username):
     c.execute(user_exists,(username,))
     score = c.fetchone()
     return score
+
+def question(username,question):
+    DB_FILE="data/AllDogsGoToHeaven.db"
+    db = sqlite3.connect(DB_FILE) #open if file exists, otherwise create
+    c = db.cursor()
+    command = 'SELECT question FROM questions WHERE questions.username = (?) AND questions.question = (?);'
+    c.execute(command, (username, question))
+    match = c.fetchone()
+    return match
+    
+    
+    
         
         
         

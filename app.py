@@ -122,29 +122,34 @@ def startGame():
     The user is given a text box to write their answer in
     '''
     if 'username' in session:
-        #gets a question from the jservice API
+        username = session['username']
         value = list(dict(request.args).keys())[0]
         url = "http://jservice.io/api/clues?value=" + value
         readUrl = urllib.request.urlopen(url)
         data = json.loads(readUrl.read())
         randI =  random.randint(0,len(data) - 1)
-        question = data[randI]['question'].split(' ')
-        username = session["username"]
-        score = search.score(username)[0]
-        for each in question:
-            if each == '&':
-                question[question.index('&')] = 'and'
+        quest = data[randI]['question']
+        if search.question(username, quest) == None:
+            #gets a question from the jservice API
+            question = data[randI]['question'].split(' ')
+            update.ansQuestion(username, quest)
+            for each in question:
+                if each == '&':
+                    question[question.index('&')] = 'and'
             question = ' '.join(question)
-                #gets the correct answer from the jservice api and strips is of italics
+            #gets the correct answer from the jservice api and strips is of italics
             answer = "_".join(data[randI]['answer'].strip('<i>').strip('</i>').split(" "))
             #gets the category of the question
             category = data[randI]['category']['title']
             uCategory = '_'.join(category.split(' '))
             return render_template('question.html', question = question, category = category, answer = answer,
                            link = '/check?question=' + '_'.join(question.split(' ')),
-                           uCategory = uCategory, points = value, Points = score)
+                           uCategory = uCategory, points = value)
+        else:
+            return startGame()
     else:
         return redirect(url_for('home'))
+
 
 timesWrong = 0
 @app.route('/check', methods = ['GET','POST'])

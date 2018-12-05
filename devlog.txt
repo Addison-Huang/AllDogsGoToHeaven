@@ -279,3 +279,7 @@ merge conflicts.
 Fixed the navbar and the high score table so it was vertical.
 Worked on breadcrumbs. Made music autoplay!
 ==============================================================
+addisonH -- 2018-12-05 13:13
+--------------------------------------------------------------
+Users cannot get the same question now!
+==============================================================

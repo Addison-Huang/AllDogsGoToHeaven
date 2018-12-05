@@ -129,6 +129,8 @@ def startGame():
         data = json.loads(readUrl.read())
         randI =  random.randint(0,len(data) - 1)
         question = data[randI]['question'].split(' ')
+        username = session["username"]
+        score = search.score(username)[0]
         for each in question:
             if each == '&':
                 question[question.index('&')] = 'and'
@@ -140,7 +142,7 @@ def startGame():
             uCategory = '_'.join(category.split(' '))
             return render_template('question.html', question = question, category = category, answer = answer,
                            link = '/check?question=' + '_'.join(question.split(' ')),
-                           uCategory = uCategory, points = value)
+                           uCategory = uCategory, points = value, Points = score)
     else:
         return redirect(url_for('home'))
 
@@ -204,6 +206,8 @@ def checkAnswer():
         useranswer = useranswer.split(' ')
         answer = answer.split(' ')
         correct = True
+        username = session['username']
+        score = search.score(username)[0]
         #checks it by seeing if all the noncommon words in the user's answer are in the correct answer and if the match between the strings is lower than 85%
         for word in useranswer:
             if word not in cWords:
@@ -213,7 +217,7 @@ def checkAnswer():
         #if so increase the user's score and say that the user is correct
             timesWrong = 0
             update.addScore(username,points)
-            return render_template('correct.html', link = link, title = title)
+            return render_template('correct.html', link = link, title = title, Points = score)
         else:
             #otherwise check how many times the user got the question wrong and act accordingly
             timesWrong += 1
@@ -222,7 +226,7 @@ def checkAnswer():
                 timesWrong = 0
                 update.subScore(username,points)
                 return render_template('results.html', answer = ' '.join(answer),
-                                   useranswer = ' '.join(useranswer), title = title, link = link)
+                                   useranswer = ' '.join(useranswer), title = title, link = link, Points = score)
             else:
                 #otherwise let them try again
                 return render_template('question.html', question = question,

@@ -242,4 +242,14 @@ dennisC -- 2018-12-04 12:38
 Finished checking if the user answer and the correct answer
 were similar by removing a few common words from both and
 checking the similarity between the 2 strings
+
+==============================================================
+
+claireL -- 2018-12-04 20:21
+--------------------------------------------------------------
+Added music thing and removed the video iframe.
+Added button to play game that would link to the points page and
+added grids to include how to play the game. Added your score in
+the navbar and the database.
+
 ==============================================================

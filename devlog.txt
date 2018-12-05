@@ -284,7 +284,8 @@ addisonH -- 2018-12-05 13:13
 Users cannot get the same question now!
 ==============================================================
 
-dennisC -- 2018-12-05 15:18
+dennisC -- 2018-12-05 18:01
 --------------------------------------------------------------
-Finished getKey()
+Finished getKey(), showed how many points gained and current
+points on result pages, and showed score on navbar in questions
 ==============================================================

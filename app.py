@@ -153,7 +153,7 @@ def startGame():
             uCategory = '_'.join(category.split(' '))
             return render_template('question.html', question = question, category = category, answer = answer,
                            link = '/check?question=' + '_'.join(question.split(' ')),
-                           uCategory = uCategory, points = value,Points = search.score(username)[0])
+                           uCategory = uCategory, points = value,Points = search.score(username)[0], wrong = 'Tries Left: 3')
         else:
             return startGame()
     else:
@@ -200,10 +200,21 @@ def checkAnswer():
         except:
             title = "No content found or no API key given"
             link = "https://playmeadowlands.com/generic.aspx?id=16034"
-        #checks if the answer is correct or similar enough to the correct answer
-        cWords = ['an','a','the','and']
+        cWords = ['an','a','the','and','be','or','in']
         answer = answer.strip(' ').lower().split('_')
         useranswer = useranswer.strip(' ').lower().split(' ')
+        #removes special characters from the useranswer and answer
+        index = 0
+        for each in useranswer:
+            new = ''.join(e for e in each if e.isalnum())
+            useranswer[index] = new
+            index += 1
+        index = 0
+        for each in answer:
+            new = ''.join(e for e in each if e.isalnum())
+            answer[index] = new
+            index += 1
+        #removes common words from the answer and useranswer
         for word in cWords:
             for ans in answer:
                 if word == ans:
@@ -211,6 +222,7 @@ def checkAnswer():
             for uAns in useranswer:
                 if word == uAns:
                     useranswer.remove(word)
+        #finds similarity between the answer and useranswer
         useranswer = ' '.join(useranswer)
         answer = ' '.join(answer)
         seq = difflib.SequenceMatcher(None,a = answer, b= useranswer)
@@ -223,7 +235,7 @@ def checkAnswer():
         #checks it by seeing if all the noncommon words in the user's answer are in the correct answer and if the match between the strings is lower than 85%
         for word in useranswer:
             if word not in cWords:
-                if (word not in answer and dif < 85.0) or dif < 75.0:
+                if (word not in answer and dif < 60.0) or dif < 70.0:
                     correct = False
         if correct:
         #if so increase the user's score and say that the user is correct

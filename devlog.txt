@@ -289,10 +289,16 @@ dennisC -- 2018-12-05 18:01
 Finished getKey(), showed how many points gained and current
 points on result pages, and showed score on navbar in questions
 ==============================================================
-==============================================================
 damianW -- 2018-12-05 22:41
 --------------------------------------------------------------
 Fixed error with points where there were inconsistencies with
 the score that you had after each question and your actual
 score
+
+==============================================================
+damianW -- 2018-12-05 12:31
+--------------------------------------------------------------
+Fixed lots of foundation
+Made audio not autoplay
+
 ==============================================================

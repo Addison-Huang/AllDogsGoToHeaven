@@ -229,8 +229,8 @@ def checkAnswer():
         #if so increase the user's score and say that the user is correct
             timesWrong = 0
             update.addScore(username,points)
-            return render_template('correct.html', link = link, title = title, Points = score,
-            cScore = '+' + str(points) + ', ' + str(score))
+            return render_template('correct.html', link = link, title = title, Points = str(int(score)+ int(points)),
+            cScore = '+' + str(points) + ', ' + str(int(score)+ int(points)))
         else:
             #otherwise check how many times the user got the question wrong and act accordingly
             timesWrong += 1
@@ -239,8 +239,8 @@ def checkAnswer():
                 timesWrong = 0
                 update.subScore(username,points)
                 return render_template('results.html', answer = ' '.join(answer),
-                                   useranswer = ' '.join(useranswer), title = title, link = link, Points = score,
-                                   cScore = '-' + str(points) + ', ' + str(score))
+                                   useranswer = ' '.join(useranswer), title = title, link = link, Points = str(int(score)- int(points)),
+                                   cScore = '-' + str(points) + ', ' + str(int(score) - int(points)))
             else:
                 #otherwise let them try again
                 return render_template('question.html', question = question,

@@ -3,13 +3,7 @@
 {% block head %}<title> Log In Page </title>{% endblock %}
 
 {% block content %}
-{% set msgs = get_flashed_messages() %}
-{% for each in msgs %}
-<h2>{{each}}<h2>
-      
 
-<br>
-{% endfor %}
 {% block heading %}<h3><center>Please Log In</center></h3>{% endblock %}
 {% block action %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.0/css/foundation.css">
@@ -33,6 +27,12 @@
   Password
         <input type="password" id="password" name="password" placeholder="Password">
 </div>
+
+{% set msgs = get_flashed_messages() %}
+{% for each in msgs %}
+<p style="color:red;"><b>{{each}}<p></b>
+{% endfor %}
+
 <input id="show-password" type="checkbox" onclick="myFunction()"><label for="show-password">Show password</label>
 
 <script>
@@ -50,9 +50,10 @@
   <input class="button expanded" type="submit" value="Log In" name="sub1">
 </form>
 {% block register %}
-Don't have an account?
-<br>
-<br>
+<p>
+  Don't have an account?
+</p>
+
 <form action="/reg">
  
   <input class="button expanded" type="submit" value="Register" name="regbutton" value="REGISTER" formaction="/reg">

@@ -21,14 +21,46 @@
   <title>Question</title>
 {% endblock %}
 {% block content %}
-  <body style="background-color:#EDAE49;">
-  <h3>Question: {{question}}<br>Category: {{category}}</h3>
-  <h4>{{wrong}}</h4>
+<body style="background-color:#EDAE49;">
+<br>
+
+
+
+<div class="grid-x grid-padding-x">
+		<div class="large-6 medium-6 cell">
+		  <div style="background-color:#00798C;" class="primary callout"><h3> Question: </h3>
+		    <p>
+		      {{question}}
+		    </p>
+		  </div>
+		</div>
+		<div class="large-6 medium-6 cell">
+		  <div style="background-color:#00798C;" class="primary callout"> <h3> Category: </h3>
+<p> {{category}}
+</p>
+		  </div>
+</div></div>
+
+
+    <div  class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#EDAE49;" class="primary callout">
+		    <h3><center>
+		      {{wrong}}
+		    </h3></center>
+		  </div>
+		</div>
   <form action = {{link}} method = "POST">
-    Answer:<input type = 'text' name = 'useranswer'>
+ 
+    <center>
+      <h3>
+	Answer:
+      </h3>
+      <input type = 'text' name = 'useranswer'>
     <input type = 'hidden' name = 'answer' value = {{answer}}>
     <input type = 'hidden' name = 'uCategory' value = {{uCategory}}>
     <input type = 'hidden' name = 'points' value = {{points}}>
   </form>
-  </body>
+</center>
+
+</body>
 {% endblock %}

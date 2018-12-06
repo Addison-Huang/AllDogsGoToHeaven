@@ -67,13 +67,13 @@ def authPage():
             username=request.form['username'] #username
             password = search.password(username) #password that matches the username
             if password == None: #if credentials are incorrect
-                flash('incorrect credentials')
+                flash('Wrong Username or Password!')
                 return redirect(url_for('home')) #redirects
             elif sha256_crypt.verify(request.form['password'], password[0]): #if password is correct, login
                 session['username'] = username
                 return redirect(url_for('authPage'))
             else: #else credentials are wrong
-                flash('incorrect credentials')
+                flash('Wrong Username or Password!')
                 return redirect(url_for('home'))
         except:
             return redirect(url_for('home'))

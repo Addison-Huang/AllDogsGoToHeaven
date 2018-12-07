@@ -14,8 +14,6 @@ import sqlite3 #imports sqlite
 app = Flask(__name__)
 app.secret_key = urandom(32)
 
-builder.main()
-
 #----------------------------------------------------------getKey--------------------------------------------------------
 def getKey():
     try:
@@ -27,6 +25,7 @@ def getKey():
 #----------------------------------------------------------home--------------------------------------------------------
 @app.route("/",methods=['GET','POST'])
 def home():
+    builder.main()
     if 'username' in session: #if user is logged in
         return redirect(url_for('authPage'))
     else:

@@ -20,6 +20,9 @@ def getKey():
         with open('keys.json') as f:
             data = json.load(f)
         return data['googleapi']
+        print('---------------')
+        print(data['googleapi'])
+        print('---------------')
     except:
         pass
 #----------------------------------------------------------home--------------------------------------------------------

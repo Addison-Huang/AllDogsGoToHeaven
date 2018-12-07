@@ -319,4 +319,11 @@ claireL -- 2018-12-06 23:10
 --------------------------------------------------------------
 Fixed foundation in question page and results page to make it
 uniform and pretty.
+
+==============================================================
+claireL -- 2018-12-07 1:56
+--------------------------------------------------------------
+House cleaning on the general website: fixed google API links
+so that they would open in a new tab. Adjusted sizing of words in
+navbar. Project looks done!!
 ==============================================================

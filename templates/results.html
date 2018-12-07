@@ -3,30 +3,47 @@
 
 {% block head %}
 <body style="background-color:#EDAE49;">
-  <div class = "header">
+ <div  style="background-color:#D14958;" class="top-bar">
     <div  style="background-color:#D14958;" class="top-bar-left">
       <ul style="background-color:#D14958;" class="dropdown menu">
-          <li><a href = "/auth" >Home</a></li>
-          <li><a href = "/logout" style="color:black;"> Log Out</a>
-         </li>
-         <li> <a style="color:black;"> Your Score: {{Points}} </a></li>
+	<li style="color:black;">
+	  <a style="color:black;"  href="/auth"> Home </a>
+	</li>
+
+	<li><a href = "/logout" style="color:black;"> Log Out</a>
+	</li>
+	<li>  <a style="color:black;"> Your Score: {{Points}}  </a>
+	</li>
+   		 
         </ul>
     </div>
-     </div>
+  </div>
   <title>Results</title>
+<center>
   <h1>Incorrect</h1>
 {% endblock %}
-{% block content %}
-Your Answer: {{useranswer}} <br>
-Correct Answer: {{answer}}<br>
-Points Gained or Lost and Your Current Score: {{cScore}}
+  {% block content %}
+   <div  class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#EDAE49;" class="primary callout">
+		    <h3><center>
+		     Points Gained/Lost and Your Current Score: {{cScore}}
+		    </h3>
+		  </div>
+   </div>
+   <h5>
+<b> Your Answer</b>: {{useranswer}} <br>
+<b> Correct Answer</b>: {{answer}}<br></h5>
+</center>
+<center>
+   <h3>
+Read More about the Topic:	    </h3>
+<a href = {{link}}>  Click here: {{title}} </a>
+		</center>
+
 <br>
-Read some more about the content:
-<a href = {{link}}> {{title}} </a>
 <br>
-<br>
-<form action = '/points' method = "POST">
-  <input type = 'submit' name = "Go back to menu" value = "Play Again?">
-</form>
+<a href="/points">
+	    <button type="button" class="success button expanded">Play Again!</button></a>
+
 </body>
 {% endblock %}

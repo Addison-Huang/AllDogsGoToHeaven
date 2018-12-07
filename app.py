@@ -203,15 +203,22 @@ def checkAnswer():
         cWords = ['an','a','the','and','be','or','in']
         answer = answer.strip(' ').lower().split('_')
         useranswer = useranswer.strip(' ').lower().split(' ')
+        #replaces numbers with their word equivalent
+        nums = {'0':'zero','1':'one','2':'two','3':'three','4':'four','5':'five',
+                '6':'six','7':'seven','8':'eight','9':'nine','10':'ten'}
         #removes special characters from the useranswer and answer
         index = 0
         for each in useranswer:
             new = ''.join(e for e in each if e.isalnum())
+            if new in nums:
+                new = nums[new]
             useranswer[index] = new
             index += 1
         index = 0
         for each in answer:
             new = ''.join(e for e in each if e.isalnum())
+            if new in nums:
+                new = nums[new]
             answer[index] = new
             index += 1
         #removes common words from the answer and useranswer
@@ -235,7 +242,7 @@ def checkAnswer():
         #checks it by seeing if all the noncommon words in the user's answer are in the correct answer and if the match between the strings is lower than 85%
         for word in useranswer:
             if word not in cWords:
-                if (word not in answer and dif < 60.0) or dif < 70.0:
+                if (word not in answer and dif < 70.0) or dif < 80.0:
                     correct = False
         if correct:
         #if so increase the user's score and say that the user is correct

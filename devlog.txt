@@ -302,8 +302,10 @@ Fixed lots of foundation
 Made audio not autoplay
 ==============================================================
 
-dennisC -- 2018-12-05 18:01
+dennisC -- 2018-12-05 21:41
 --------------------------------------------------------------
 Removed special characters from answer and useranswer, lowered
-similarity threshold for correct answers, edited design doc
+similarity threshold for correct answers, edited design doc,
+made it so that numbers in the answer and useranswer get
+converted to their word equivalents
 ==============================================================

@@ -242,7 +242,7 @@ def checkAnswer():
         #checks it by seeing if all the noncommon words in the user's answer are in the correct answer and if the match between the strings is lower than 85%
         for word in useranswer:
             if word not in cWords:
-                if (word not in answer and dif < 60.0) or dif < 70.0:
+                if (word not in answer and dif < 70.0) or dif < 80.0:
                     correct = False
         if correct:
         #if so increase the user's score and say that the user is correct

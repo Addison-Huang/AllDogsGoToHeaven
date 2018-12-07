@@ -300,5 +300,10 @@ damianW -- 2018-12-05 12:31
 --------------------------------------------------------------
 Fixed lots of foundation
 Made audio not autoplay
+==============================================================
 
+dennisC -- 2018-12-05 18:01
+--------------------------------------------------------------
+Removed special characters from answer and useranswer, lowered
+similarity threshold for correct answers, edited design doc
 ==============================================================

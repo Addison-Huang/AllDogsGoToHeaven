@@ -45,6 +45,7 @@ def username(username):
 
 '''
 score(username)
+retrieves score of user
 '''
 def score(username):
     DB_FILE="data/AllDogsGoToHeaven.db"
@@ -54,6 +55,12 @@ def score(username):
     c.execute(user_exists,(username,))
     score = c.fetchone()
     return score
+
+'''
+question(username,question)
+returns question if user already answered that question
+None if user didn't answer
+'''
 
 def question(username,question):
     DB_FILE="data/AllDogsGoToHeaven.db"

@@ -2,27 +2,56 @@
 
 
 {% block head %}
-<div class = "header">
-  <div  style="background-color:#D14958;" class="top-bar-left">
-    <ul style="background-color:#D14958;" class="dropdown menu">
-        <li><a href = "/auth" >Home</a></li>
-        <li><a href = "/logout" style="color:black;"> Log Out</a>
-       </li>
-       <li> <a style="color:black;"> Your Score: {{Points}}  </a></li>
-      </ul>
+
+<div  style="background-color:#D14958;" class="top-bar">
+    <div  style="background-color:#D14958;" class="top-bar-left">
+      <ul style="background-color:#D14958;" class="dropdown menu">
+	<li style="color:black;">
+	  <a style="color:black;"  href="/auth"> Home </a>
+	</li>
+
+	<li><a href = "/logout" style="color:black;"> Log Out</a>
+	</li>
+	<li>  <a style="color:black;"> Your Score: {{Points}}  </a>
+	</li>
+   		 
+        </ul>
+    </div>
   </div>
-   </div>
-  <title>Results</title>
+
+
+<title>Results</title>
+<center>
   <h1>Correct</h1>
+</center>
+
 {% endblock %}
 {% block content %}
-  <body style="background-color:#EDAE49;">
-Points Gained or Lost and Your Current Score: {{cScore}}
-<br>
-Want to know more?
-<a href = {{link}}> {{title}} </a>
-<form action = '/points' method = "POST">
-  <input type = 'submit' name = "Go back to menu" value = "Play Again?">
-</form>
+
+
+<body style="background-color:#EDAE49;">
+
+
+    <div  class="large-4 medium-4 small-4 cell">
+		  <div style="background-color:#EDAE49;" class="primary callout">
+		    <h3><center>
+		     Points Gained/Lost and Your Current Score: {{cScore}}
+		    </h3></center>
+		  </div>
+		</div>
+
+   
+    <center>
+ 
+		    <h3><center>
+Want to Know More?		    </h3>
+		 
+    
+		    <a href = {{link}}>  Click here: {{title}} </a>
+		    </center>
+		    <br>
+
+	    <button type="button" class="success button expanded">Play Again!</button></a>
+
 </body>
 {% endblock %}

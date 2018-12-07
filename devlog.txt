@@ -309,3 +309,8 @@ similarity threshold for correct answers, edited design doc,
 made it so that numbers in the answer and useranswer get
 converted to their word equivalents
 ==============================================================
+==============================================================
+damianW -- 2018-12-06 22:10
+--------------------------------------------------------------
+Stylized buttons
+==============================================================

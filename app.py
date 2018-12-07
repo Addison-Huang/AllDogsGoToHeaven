@@ -203,15 +203,22 @@ def checkAnswer():
         cWords = ['an','a','the','and','be','or','in']
         answer = answer.strip(' ').lower().split('_')
         useranswer = useranswer.strip(' ').lower().split(' ')
+        #replaces numbers with their word equivalent
+        nums = {'0':'zero','1':'one','2':'two','3':'three','4':'four','5':'five',
+                '6':'six','7':'seven','8':'eight','9':'nine','10':'ten'}
         #removes special characters from the useranswer and answer
         index = 0
         for each in useranswer:
             new = ''.join(e for e in each if e.isalnum())
+            if new in nums:
+                new = nums[new]
             useranswer[index] = new
             index += 1
         index = 0
         for each in answer:
             new = ''.join(e for e in each if e.isalnum())
+            if new in nums:
+                new = nums[new]
             answer[index] = new
             index += 1
         #removes common words from the answer and useranswer
